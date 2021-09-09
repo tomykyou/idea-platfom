@@ -1,2 +1,12 @@
-<h1>Mainnotes#userpg</h1>
-<p>Find me in app/views/mainnotes/userpg.html.erb</p>
+<h1> <%= @user.username %>の投稿内容を表示</h1>
+<ul>
+  <% @mainnote.each do |mainnote| %>
+      <li>
+        <%= link_to mainnote.text, mainnote %>
+      </li>
+  <% end %>
+</ul>
+<%= link_to "マイページへ", mainnnote_mypage_path %>
+<%= link_to "このサイトについて", mainnnote_about_path %>
+
+<%= link_to ' TOPへ', root_path %>

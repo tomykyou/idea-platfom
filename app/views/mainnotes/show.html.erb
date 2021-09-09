@@ -1,2 +1,21 @@
-<h1>Mainnotes#show</h1>
-<p>Find me in app/views/mainnotes/show.html.erb</p>
+<h1><%= @mainnote.user %></h1>
+
+<p><%= @mainnote.text %></p>
+
+<% if @mainnote.user == current_user.username %>
+  <ul>
+    <li><%= link_to "Edit", edit_mainnote_path(@mainnote) %></li>
+    <li><%= link_to "Destroy", mainnote_path(@mainnote),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %></li>
+  </ul>
+<% else %>
+<% end %>
+
+<h2>Comments</h2>
+<%= render "notecomments/comment" %>
+
+<h2>Add a comment:</h2>
+<%= render 'notecomments/form' %>
+
+<%= link_to ' TOPへ', root_path %>

@@ -1,2 +1,18 @@
-<h1>Mainnotes#edit</h1>
-<p>Find me in app/views/mainnotes/edit.html.erb</p>
+<h1>Edit SNS</h1>
+
+<%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
+  <div>
+    <%= form.label :user %><br>
+    <%= form.text_field :user %>
+  </div>
+
+  <div>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<%= link_to ' TOPへ', root_path %>
