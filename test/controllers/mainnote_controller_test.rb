@@ -1,43 +1,43 @@
 require "test_helper"
 
-class MainnotesControllerTest < ActionDispatch::IntegrationTest
+class MainnoteControllerTest < ActionDispatch::IntegrationTest
   test "should get top" do
-    get mainnotes_top_url
+    get mainnote_top_url
     assert_response :success
   end
 
   test "should get show" do
-    get mainnotes_show_url
+    get mainnote_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get mainnotes_new_url
+    get mainnote_new_url
     assert_response :success
   end
 
   test "should get edit" do
-    get mainnotes_edit_url
+    get mainnote_edit_url
     assert_response :success
   end
 
   test "should get _form" do
-    get mainnotes__form_url
+    get mainnote__form_url
     assert_response :success
   end
 
   test "should get mypage" do
-    get mainnotes_mypage_url
+    get mainnote_mypage_url
     assert_response :success
   end
 
   test "should get about" do
-    get mainnotes_about_url
+    get mainnote_about_url
     assert_response :success
   end
 
   test "should get userpg" do
-    get mainnotes_userpg_url
+    get mainnote_userpg_url
     assert_response :success
   end
 end
