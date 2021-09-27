@@ -1,2 +1,0 @@
-class NotecommentController < ApplicationController
-end

@@ -1,0 +1,17 @@
+<% @mainnote.notecomments.each do |notecomment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= notecomment.commenter %>
+  </p>
+  <p>
+    <strong>Comment:</strong>
+    <%= notecomment.comment %>
+  </p>
+  <p>
+  <%= link_to 'Destroy Comment', [notecomment.mainnote, notecomment],
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+</p>
+<% end %>
+
+

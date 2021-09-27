@@ -11,6 +11,10 @@
   </ul>
 <% else %>
 <% end %>
+<h2>Comments</h2>
+<%= render "notecomments/comment" %>
 
+<h2>Add a comment:</h2>
+<%= render 'notecomments/form' %>
 
 <%= link_to ' TOPへ', root_path %>

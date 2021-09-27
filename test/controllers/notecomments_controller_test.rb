@@ -1,6 +1,6 @@
 require "test_helper"
 
-class NotecommentControllerTest < ActionDispatch::IntegrationTest
+class NotecommentsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
