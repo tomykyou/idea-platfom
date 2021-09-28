@@ -11,9 +11,8 @@ class NotecommentsController < ApplicationController
       @notecomment.destroy
       redirect_to mainnote_path(@mainnote)
     end
-
     private
         def notecomment_params
-          params.require(:notecomment).permit(:commenter, :comment)
+          params.require(:notecomment).permit(:commenter, :comment, :future_point, :surprisingly_point, :realization_point)
         end
 end

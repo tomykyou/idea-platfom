@@ -61,7 +61,7 @@ class MainnoteController < ApplicationController
 
   #ログインユーザーの投稿内容を取り出す。
   def mypage
-    @mainnote = Mainnote.where(user: current_user.username)
+    @mainnote = Mainnote.where(user_id: current_user.id)
     render layout: false 
   end
 
@@ -72,7 +72,7 @@ class MainnoteController < ApplicationController
 
   def userpg
       @user = User.find(params[:id])
-      @mainnote = Mainnote.where(user: @user.username)
+      @mainnote = Mainnote.where(user_id: @user.id)
       render layout: false 
   end
   
