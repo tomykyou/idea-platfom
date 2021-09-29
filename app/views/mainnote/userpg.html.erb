@@ -6,7 +6,24 @@
       </li>
   <% end %>
 </ul>
+<% future_point=0%>
+<% surprisingly_point=0%>
+<% realization_point=0%>
+<% @notecomment.each do |notecomment| %>
+    <%future_point+=notecomment.future_point%>
+    <%surprisingly_point+=notecomment.surprisingly_point%>
+    <%realization_point+=notecomment.realization_point%>
+<% end %>
+<h3>これまでの獲得ポイント</h3>
+<strong>将来性</strong>
+<p><%=future_point%><p>
+<strong>意外性</strong>
+<p><%=surprisingly_point%><p>
+<strong>実現性</strong>
+<p><%=realization_point%><p>
+
+<%= link_to ' TOPへ', root_path %>
+
 <%= link_to "マイページへ", mainnnote_mypage_path %>
 <%= link_to "このサイトについて", mainnnote_about_path %>
-
 <%= link_to ' TOPへ', root_path %>

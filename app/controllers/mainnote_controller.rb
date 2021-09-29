@@ -29,7 +29,7 @@ class MainnoteController < ApplicationController
   #投稿内容更新のコントローラー
   def edit
     @mainnote = Mainnote.find(params[:id])
-    unless @mainnote.usenamer == current_user.username
+    unless @mainnote.user_id == current_user.id
       redirect_to  @mainnote
     end
   end
@@ -37,7 +37,7 @@ class MainnoteController < ApplicationController
   #ログイン情報のアップデート
   def update
     @mainnote = Mainnote.find(params[:id])
-    if @mainnote.usenamer != current_user.username
+    if @mainnote.user_id != current_user.id
       redirect_to  @mainnote
     else
       if @mainnote.update(mainnote_params)
@@ -51,7 +51,7 @@ class MainnoteController < ApplicationController
   #投稿内容の削除
   def destroy
     @mainnote = Mainnote.find(params[:id])
-    if @mainnote.usenamer != current_user.username
+    if @mainnote.user_id != current_user.id
       redirect_to  @mainnote
     else
       @mainnote.destroy
@@ -62,6 +62,7 @@ class MainnoteController < ApplicationController
   #ログインユーザーの投稿内容を取り出す。
   def mypage
     @mainnote = Mainnote.where(user_id: current_user.id)
+    @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
     render layout: false 
   end
 
@@ -73,6 +74,7 @@ class MainnoteController < ApplicationController
   def userpg
       @user = User.find(params[:id])
       @mainnote = Mainnote.where(user_id: @user.id)
+      @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
       render layout: false 
   end
   
@@ -81,4 +83,6 @@ class MainnoteController < ApplicationController
     def mainnote_params
       params.require(:mainnote).permit(:user_id,:usenamer, :text)
     end
+
+
 end
