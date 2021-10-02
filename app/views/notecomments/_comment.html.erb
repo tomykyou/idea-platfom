@@ -1,11 +1,23 @@
 <% @mainnote.notecomments.each do |notecomment| %>
   <p>
     <strong>Commenter:</strong>
-    <%= notecomment.commenter %>
+    <%= notecomment.commenter %>さん
   </p>
   <p>
     <strong>Comment:</strong>
     <%= notecomment.comment %>
+  </p>
+  <p>
+    <strong>将来性評価:</strong>
+    <%= notecomment.future_point %>pt
+  </p>
+  <p>
+    <strong>意外性評価:</strong>
+    <%= notecomment.surprisingly_point %>pt
+  </p>
+  <p>
+    <strong>実現性評価:</strong>
+    <%= notecomment.realization_point %>pt
   </p>
   <p>
   <%= link_to 'Destroy Comment', [notecomment.mainnote, notecomment],

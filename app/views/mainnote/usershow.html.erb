@@ -1,11 +1,17 @@
 <h1>ユーザー一覧</h1>
 <ul>
   <% @user.each do |user| %>
-    <li>
-      <a href="userpg/<%= user.id %>">
-        <%= user.username %>
-      </a>
-    </li>
+    <% if user.id==current_user.id%>
+      <li>
+       <%= link_to current_user.username, mainnnote_mypage_path %>
+      </li>
+    <% else %>
+      <li>
+        <a href="userpg/<%= user.id %>">
+          <%= user.username %>
+        </a>
+      </li>
+    <% end %>  
   <% end %>
 </ul>
 <%= link_to "マイページへ", mainnnote_mypage_path %>

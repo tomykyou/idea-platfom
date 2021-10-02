@@ -9,6 +9,7 @@ class MainnoteController < ApplicationController
   #idと一致するものを取ってくる。
   def show
     @mainnote = Mainnote.find(params[:id])
+    @notecomment = Notecomment.where(mainnote_id: @mainnote.id)
   end
 
   #新規の投稿のコントローラー

@@ -2,7 +2,23 @@
 
 <p><%= @mainnote.text %></p>
 
-<% if @mainnote.usenamer == current_user.username %>
+<% future_point=0%>
+<% surprisingly_point=0%>
+<% realization_point=0%>
+<% @notecomment.each do |notecomment| %>
+  <%future_point+=notecomment.future_point%>
+  <%surprisingly_point+=notecomment.surprisingly_point%>
+  <%realization_point+=notecomment.realization_point%>
+<% end %>
+<h3>これまでの獲得ポイント</h3>
+<strong>将来性</strong>
+<p><%=future_point%><p>
+<strong>意外性</strong>
+<p><%=surprisingly_point%><p>
+<strong>実現性</strong>
+<p><%=realization_point%><p>
+
+<% if @mainnote.user_id == current_user.id %>
   <ul>
     <li><%= link_to "Edit", edit_mainnote_path(@mainnote) %></li>
     <li><%= link_to "Destroy", mainnote_path(@mainnote),

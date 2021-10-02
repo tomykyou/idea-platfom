@@ -12,6 +12,14 @@
     <%= f.label :ユーザーネーム %><br />
     <%= f.text_field :username, class: "form-control" %>
   </div>
+  <div class="field">
+    <%= f.label :image %><br/>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :award %><br/>
+    <%= f.text_field :award %>
+  </div>
 
   <div class="field">
     <%= f.label :パスワード %>
