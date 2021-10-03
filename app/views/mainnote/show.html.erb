@@ -31,12 +31,22 @@
 <% end %>
 <h2>Comments</h2>
 <%= render "notecomments/comment" %>
-<% if @mainnote.user_id != current_user.id %>
-    <% @mainnote.notecomments.each do |notecomment| %>
-      <%if @notecomment.user_id != current_user.id%>
-        <h2>Add a comment:</h2>
-        <%= render 'notecomments/form' %>
-      <%end%>
-    <% end %>
+
+<%boolen='true'%>
+<% @notecomment.each do |notecomment| %>
+  <% if notecomment.user_id == current_user.id%>
+    <%boolen='あなたはこのアイデアへ既に評価を投稿しています'%>       
+  <% end %>
 <% end %>
+<% if @mainnote.user_id == current_user.id%>
+  <%boolen='自身のアイデアへ評価できません'%>
+<%end%>
+
+
+<%if boolen=='true'%>
+  <%= render "notecomments/form" %>
+<%else%>
+  <p><%=boolen%></p>
+<%end%>
+
 <%= link_to ' TOPへ', root_path %>
