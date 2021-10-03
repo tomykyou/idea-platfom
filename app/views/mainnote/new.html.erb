@@ -2,8 +2,11 @@
 
 <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
   <div>
-    <%= form.label :user_id %><br>
+
     <%= form.text_field :user_id, value: current_user.id, :readonly => true%>
+  </div>
+  <div>
+    <%= form.text_field :user_icon, value: current_user.image, :readonly => true%>
   </div>
   <div>
     <%= form.label :usenamer %><br>
