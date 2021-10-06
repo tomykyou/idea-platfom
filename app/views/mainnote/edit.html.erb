@@ -1,10 +1,6 @@
 <h1>Edit SNS</h1>
 
 <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
-  <div>
-    <%= form.label :usenamer %><br>
-    <%= form.text_field :usenamer %>
-  </div>
 
   <div>
     <%= form.label :text %><br>

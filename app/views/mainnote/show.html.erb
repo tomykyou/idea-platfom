@@ -1,8 +1,8 @@
 <% @user.each do |user| %>
   <h1><%= user.username %></h1>
-<% end %>
+  <img src=<%= user.image %> width="100" height="60">
 
-<img src=<%= @mainnote.user_icon %> width="100" height="60">
+<% end %>
 <p><%= @mainnote.text %></p>
 
 <% future_point=0%>

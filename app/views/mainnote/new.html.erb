@@ -4,13 +4,6 @@
   <div>
     <%= form.text_field :user_id, value: current_user.id, :readonly => true%>
   </div>
-  <div>
-    <%= form.text_field :user_icon, value: current_user.image, :readonly => true%>
-  </div>
-  <div>
-    <%= form.label :usenamer %><br>
-    <%= form.text_field :usenamer, value: current_user.username, :readonly => true%>
-  </div>
 
   <div>
     <%= form.label :text %><br>
