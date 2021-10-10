@@ -9,7 +9,7 @@ class MainnoteController < ApplicationController
   #idと一致するものを取ってくる。
   def show
     @mainnote = Mainnote.find(params[:id])
-    @user= User.where(id: @mainnote.user_id)
+    @user_mainnote= User.where(id: @mainnote.user_id)
     @notecomment = Notecomment.where(mainnote_id: @mainnote.id)
   end
 

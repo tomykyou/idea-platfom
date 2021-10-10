@@ -1,8 +1,11 @@
+
 <% @mainnote.notecomments.each do |notecomment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= notecomment.commenter %>さん
-  </p>
+
+<% @user_comment= User.where(id: notecomment.user_id)%>
+<% @user_comment.each do |user| %>
+  <h1><%= user.username %></h1>
+  <img src=<%= user.image %> width="100" height="60">
+<% end %>
   <p>
     <strong>Comment:</strong>
     <%= notecomment.comment %>
