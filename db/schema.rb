@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_034907) do
+ActiveRecord::Schema.define(version: 2021_10_10_040416) do
 
   create_table "mainnotes", force: :cascade do |t|
     t.string "text"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_034907) do
   end
 
   create_table "notecomments", force: :cascade do |t|
-    t.string "commenter"
     t.text "comment"
     t.integer "mainnote_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_034907) do
     t.integer "surprisingly_point"
     t.integer "realization_point"
     t.integer "user_id"
-    t.string "user_icon"
     t.index ["mainnote_id"], name: "index_notecomments_on_mainnote_id"
   end
 
