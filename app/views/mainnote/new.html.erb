@@ -1,6 +1,9 @@
 <h1>New SNS</h1>
 
 <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
+    <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   <div>
     <%= form.text_field :user_id, value: current_user.id, :readonly => true%>
   </div>

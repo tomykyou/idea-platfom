@@ -13,7 +13,6 @@ class NotecommentsController < ApplicationController
     end
     private
         def notecomment_params
-          #コメンターとアイコンを削除する
-          params.require(:notecomment).permit(:user_id, :user_icon, :commenter, :comment, :future_point, :surprisingly_point, :realization_point)
+          params.require(:notecomment).permit(:user_id, :comment, :future_point, :surprisingly_point, :realization_point)
         end
 end
