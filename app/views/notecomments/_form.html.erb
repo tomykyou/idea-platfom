@@ -1,28 +1,30 @@
 <%= form_with model: [ @mainnote, @mainnote.notecomments.build ] do |form| %>
-    <p>
-      <%= form.text_field :user_id, value: current_user.id, :readonly => true%>
-    </p>
-    <p>
-      <%= form.label :comment %><br>
-      <%= form.text_area :comment %>
-    </p>
+  <p>
+    <%= form.text_field :user_id, value: current_user.id, :readonly => true%>
+  </p>
+  
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </p>
     
-    <p>
-      <%= form.label :future_point %><br>
-      <%= form.select :future_point, [["0pt", selected: 0], ["1pt", 1], ["2pt", 2], ["3pt", 3], ["4pt", 4], ["5pt", 5],["6pt", 6],["7pt", 7],["8pt", 8],["9pt", 9],["10pt", 10]] %>
-    </p>
+  <p>
+    <%= form.label :future_point %><br>
+    <%= form.select :future_point, [["0pt", selected: 0], ["1pt", 1], ["2pt", 2], ["3pt", 3], ["4pt", 4], ["5pt", 5],["6pt", 6],["7pt", 7],["8pt", 8],["9pt", 9],["10pt", 10]] %>
+  </p>
     
-    <p>
-      <%= form.label :surprisingly_point %><br>
-      <%= form.select :surprisingly_point, [["0pt", selected: 0], ["1pt", 1], ["2pt", 2], ["3pt", 3], ["4pt", 4], ["5pt", 5],["6pt", 6],["7pt", 7],["8pt", 8],["9pt", 9],["10pt", 10]] %>
-    </p>
+  <p>
+    <%= form.label :surprisingly_point %><br>
+    <%= form.select :surprisingly_point, [["0pt", selected: 0], ["1pt", 1], ["2pt", 2], ["3pt", 3], ["4pt", 4], ["5pt", 5],["6pt", 6],["7pt", 7],["8pt", 8],["9pt", 9],["10pt", 10]] %>
+  </p>
     
-    <p>
-      <%= form.label :realization_point%><br>
-      <%= form.select :realization_point , [["0pt", selected: 0], ["1pt", 1], ["2pt", 2], ["3pt", 3], ["4pt", 4], ["5pt", 5],["6pt", 6],["7pt", 7],["8pt", 8],["9pt", 9],["10pt", 10]] %>
-    </p>
-    <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
+  <p>
+    <%= form.label :realization_point%><br>
+    <%= form.select :realization_point , [["0pt", selected: 0], ["1pt", 1], ["2pt", 2], ["3pt", 3], ["4pt", 4], ["5pt", 5],["6pt", 6],["7pt", 7],["8pt", 8],["9pt", 9],["10pt", 10]] %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
   

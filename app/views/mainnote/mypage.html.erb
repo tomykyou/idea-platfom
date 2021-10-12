@@ -1,8 +1,51 @@
-<h2><%= current_user.username%>さんのマイページ</h2>
+<h2>マイページ</h2>
+
 <h1>メール：<%= current_user.email%></h1>
+
 <h1>アカウント作成日<%= current_user.created_at%></h1>
-<h1>一言<%= current_user.award%></h1>
+
+<h1><%= current_user.award%></h1>
+
 <img src=<%= @current_user.image %> width="100" height="60">
+<% all_point=0%>
+<% future_point=0%>
+<% surprisingly_point=0%>
+<% realization_point=0%>
+
+<% @notecomment.each do |notecomment| %>
+    <%future_point+=notecomment.future_point%>
+    <%surprisingly_point+=notecomment.surprisingly_point%>
+    <%realization_point+=notecomment.realization_point%>
+<% end %>
+
+<%all_point=future_point+surprisingly_point+realization_point%>
+<h3>あなたのランクは・・・・</h3>
+<% if all_point<2 && all_point>=0%>
+  <h1>ノーランク</h1>
+<% elsif  all_point<4 && all_point>=2%>
+  <h1>ブロンズランク</h1>
+<% elsif  all_point<6 && all_point>=4%>
+  <h1>シルバーランク</h1>
+<% elsif  all_point<8 && all_point>=6%>
+  <h1>ゴールドランク</h1>
+<% elsif all_point>=8%>
+  <h1>ダイヤモンドランク</h1>
+<%end%>
+
+<h3>獲得ポイント総計</h3>
+
+<h3>種別獲得ポイント</h3>
+
+<strong>将来性</strong>
+<p><%=future_point%>pt<p>
+
+<strong>意外性</strong>
+<p><%=surprisingly_point%>pt<p>
+
+<strong>実現性</strong>
+<p><%=realization_point%>pt<p>
+
+<h3>あなたの投稿一覧</h3>
 <ul>
   <% @mainnote.each do |mainnote| %>
     <li>
@@ -10,21 +53,7 @@
     </li>
   <% end %>
 </ul>
-<% future_point=0%>
-<% surprisingly_point=0%>
-<% realization_point=0%>
-<% @notecomment.each do |notecomment| %>
-    <%future_point+=notecomment.future_point%>
-    <%surprisingly_point+=notecomment.surprisingly_point%>
-    <%realization_point+=notecomment.realization_point%>
-<% end %>
-<h3>これまでの獲得ポイント</h3>
-<strong>将来性</strong>
-<p><%=future_point%><p>
-<strong>意外性</strong>
-<p><%=surprisingly_point%><p>
-<strong>実現性</strong>
-<p><%=realization_point%><p>
 
 <%= link_to ' TOPへ', root_path %>
+
 <%= link_to ' 登録情報編集', edit_user_registration_path %>

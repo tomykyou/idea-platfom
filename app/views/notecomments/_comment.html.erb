@@ -1,28 +1,32 @@
 <% @mainnote.notecomments.each do |notecomment| %>
-<% @user_comment= User.where(id: notecomment.user_id)%>
-<% @user_comment.each do |user| %>
-  <h1><%= user.username %></h1>
-  <img src=<%= user.image %> width="100" height="60">
-<% end %>
-    <p><strong>Comment:</strong></p>
-    <%if notecomment.comment.nil? %>
+  <% @user_comment= User.where(id: notecomment.user_id)%>
+  <% @user_comment.each do |user| %>
+    <h1><%= user.username %></h1>
+    <img src=<%= user.image %> width="100" height="60">
+  <% end %>
+
+  <p><strong>Comment:</strong></p>
+  <%if notecomment.comment.nil? %>
     <p><%= notecomment.comment %></p>
-    <% else %>
+  <% else %>
       <p><%=safe_join(notecomment.comment.split("\n"),tag(:br))%></p>
-    <%end %>
+  <%end %>
 
   <p>
     <strong>将来性評価:</strong>
     <%= notecomment.future_point %>pt
   </p>
+  
   <p>
     <strong>意外性評価:</strong>
     <%= notecomment.surprisingly_point %>pt
   </p>
+
   <p>
     <strong>実現性評価:</strong>
     <%= notecomment.realization_point %>pt
   </p>
+  
   <% if notecomment.user_id == current_user.id %>
     <p>
     <%= link_to 'Destroy Comment', [notecomment.mainnote, notecomment],
