@@ -1,8 +1,5 @@
 class Notecomment < ApplicationRecord
-  ##validates :comment, presence: true
-  ##validates :future_point, presence: true
-  ##validates :surprisingly_point, presence: true
-  ##validates :realization_point, presence: true
+  #コメントはメッセージがなくともできるように設定。ポイントは初期値を０にしているので入力チェックを外す。
   belongs_to :user
   belongs_to :mainnote
 end

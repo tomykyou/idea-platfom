@@ -1,13 +1,13 @@
 <% @mainnote.notecomments.each do |notecomment| %>
+  <!--コントローラー上で行うとエラーが出るためview上でユーザー情報を取得。コメントテーブルのユーザーIDをキーにしてユーザーテーブルのユーザ名とアイコンを取得-->
   <% @user_comment= User.where(id: notecomment.user_id)%>
   <% @user_comment.each do |user| %>
     <h1><%= user.username %></h1>
     <img src=<%= user.image %> width="100" height="60">
   <% end %>
-
+  <!--コメント入力時の改行を反映させる。nullの場合は何も表示させない。-->
   <p><strong>Comment:</strong></p>
   <%if notecomment.comment.nil? %>
-    <p><%= notecomment.comment %></p>
   <% else %>
       <p><%=safe_join(notecomment.comment.split("\n"),tag(:br))%></p>
   <%end %>
@@ -24,9 +24,11 @@
 
   <p>
     <strong>実現性評価:</strong>
+    
     <%= notecomment.realization_point %>pt
   </p>
   
+  <!--コメントでログインしているユーザーIDと一致しているコメントのみ削除ができる。-->
   <% if notecomment.user_id == current_user.id %>
     <p>
     <%= link_to 'Destroy Comment', [notecomment.mainnote, notecomment],

@@ -23,6 +23,7 @@
 <strong>実現性</strong>
 <p><%=realization_point%><p>
 
+<!--ログインしているユーザーのみに更新削除をできるように設定。コントローラーでもできるが、ボタンを表示させたくないのでviewで条件を設定。-->
 <% if @mainnote.user_id == current_user.id %>
   <ul>
     <li><%= link_to "Edit", edit_mainnote_path(@mainnote) %></li>
@@ -35,6 +36,7 @@
 <h2>Comments</h2>
 <%= render "notecomments/comment" %>
 
+<!--コメントをしているかどうかの判定。rubyにはboolen型がないので文字列で判定をさせる。-->
 <%boolen='true'%>
 <% @notecomment.each do |notecomment| %>
   <% if notecomment.user_id == current_user.id%>
