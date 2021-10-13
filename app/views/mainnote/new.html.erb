@@ -1,13 +1,25 @@
+<%= link_to "New Article", new_mainnote_path %>
+<%= link_to "マイページへ", mainnnote_mypage_path %>
+<%= link_to "このサイトについて", mainnnote_about_path %>
+<%= link_to "投稿者一覧へ", mainnnote_usershow_path %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+
 <h1>New</h1>
 
 <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
   <% @mainnote.errors.full_messages_for(:text).each do |message| %>
     <div><%= message %></div>
   <% end %>
+  
+  <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
   <div>
     <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
+  
   </div>
-
+  
   <div>
     <%= form.label :title %><br>
     <%= form.text_area :title %>
