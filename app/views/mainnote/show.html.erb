@@ -1,9 +1,14 @@
+<h1><%=@mainnote.title%></h1>
 <% @user_mainnote.each do |user| %>
-  <h1><%= user.username %></h1>
+  <p><%= user.username %></p>
   <img src=<%= user.image %> width="100" height="60">
 <% end %>
 
+
 <p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
+<img src=<%= @mainnote.image1 %> width="100" height="60"><br>
+<img src=<%= @mainnote.image2 %> width="100" height="60"><br>
+<img src=<%= @mainnote.image3 %> width="100" height="60">
 
 <% future_point=0%>
 <% surprisingly_point=0%>

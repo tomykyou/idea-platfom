@@ -4,7 +4,7 @@
 <ul>
   <% @mainnote.each do |mainnote| %>
     <li>
-      <%= link_to mainnote.text, mainnote %>
+      <%= link_to mainnote.title, mainnote %>
     </li>
   <% end %>
 </ul>

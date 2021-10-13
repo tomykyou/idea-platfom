@@ -5,12 +5,33 @@
     <div><%= message %></div>
   <% end %>
   <div>
-    <%= form.text_field :user_id, value: current_user.id, :readonly => true%>
+    <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
   </div>
 
   <div>
+    <%= form.label :title %><br>
+    <%= form.text_area :title %>
+  </div>
+  
+  <div>
     <%= form.label :text %><br>
     <%= form.text_area :text %>
+  </div>
+
+<p>アイデアの図やイラストがあれば載せましょう。</p>
+  <div>
+      <%= form.label :画像1 %><br/>
+      <%= form.file_field :image1 %>
+  </div>
+
+  <div>
+      <%= form.label :画像2 %><br/>
+      <%= form.file_field :image2 %>
+  </div>
+
+  <div>
+      <%= form.label :画像3 %><br/>
+      <%= form.file_field :image3 %>
   </div>
 
   <div>
