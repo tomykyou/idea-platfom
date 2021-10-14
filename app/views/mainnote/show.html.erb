@@ -14,21 +14,21 @@
 <p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
   
   <%if @mainnote.image1.blank? %>
-    <img src="/assets/Noimage.png" width="100" height="60">
+    <img src="/assets/Noimage.png" width="200" height="120">
   <% else %>
-    <img src=<%= @mainnote.image1 %> width="100" height="60">
+    <img src=<%= @mainnote.image1 %> width="200" height="120">
   <%end %>
   
   <%if @mainnote.image2.blank? %>
-    <img src="/assets/Noimage.png" width="100" height="60">
+    <img src="/assets/Noimage.png" width="200" height="120">
   <% else %>
-    <img src=<%= @mainnote.image2 %> width="100" height="60">
+    <img src=<%= @mainnote.image2 %> width="200" height="120">
   <%end %>
   
   <%if @mainnote.image3.blank?%>
-    <img src="/assets/Noimage.png" width="100" height="60">
+    <img src="/assets/Noimage.png" width="200" height="120">
   <% else %>
-    <img src=<%= @mainnote.image3 %> width="100" height="60">
+    <img src=<%= @mainnote.image3 %> width="200" height="120">
   <%end %>
 
 <% future_point=0%>
