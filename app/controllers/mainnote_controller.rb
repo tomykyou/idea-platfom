@@ -35,14 +35,31 @@ class MainnoteController < ApplicationController
 
   def update
     @mainnote = Mainnote.find(params[:id])
-    if @mainnote.user_id != current_user.id
-      redirect_to  @mainnote
+    if params[:delete_image1]
+      #削除ボタンが押されたらnil
+         @mainnote.image1 = nil
+         @mainnote.save!
+         render :action => 'edit'
+         return
+    end
+    if params[:delete_image2]
+      #削除ボタンが押されたらnil
+         @mainnote.image2 = nil
+         @mainnote.save!
+         render :action => 'edit'
+         return
+    end
+    if params[:delete_image3]
+      #削除ボタンが押されたらnil
+         @mainnote.image3 = nil
+         @mainnote.save!
+         render :action => 'edit'
+         return
+    end
+    if @mainnote.update(mainnote_params)
+      redirect_to @mainnote
     else
-      if @mainnote.update(mainnote_params)
-        redirect_to @mainnote
-      else
-        render :edit
-      end
+      render :edit
     end  
   end
 

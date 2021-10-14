@@ -17,6 +17,7 @@
     <div><%= message %></div>
   <% end %>
 
+       
   <div>
     <%= form.label :title %><br>
     <%= form.text_area :title %>
@@ -27,20 +28,39 @@
     <%= form.text_area :text %>
   </div>
 
-  <div>
+  <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
+  <%if @mainnote.image1.present?%>
+    <%= form.label :画像1 %><br/>
+    <img src=<%= @mainnote.image1 %> width="200" height="120"><br/>
+    <%= form.submit value: "添付画像を消す",name: "delete_image1",class: "btn_send" %><br/>
+  <%else%>
+    <div>
       <%= form.label :画像1 %><br/>
-      <%= form.file_field :image1 %>
-  </div>
-
-  <div>
-      <%= form.label :画像2 %><br/>
-      <%= form.file_field :image2 %>
-  </div>
-
-  <div>
+      <%= form.file_field :image1%><br/>
+    </div>
+  <%end%>
+ <!--画像２があれば表示して削除ボタンを表示。空ならフォームを表示-->
+   <%if @mainnote.image2.present?%>
+    <%= form.label :画像2 %><br/>
+    <img src=<%= @mainnote.image2 %> width="200" height="120"><br/>
+    <%= form.submit value: "添付画像を消す",name: "delete_image2",class: "btn_send" %><br/>
+  <%else%>
+    <div>
+        <%= form.label :画像2 %><br/>
+        <%= form.file_field :image2 %><br/>
+    </div>
+  <%end%>
+ <!--画像３があれば表示して削除ボタンを表示。空ならフォームを表示-->
+  <%if @mainnote.image3.present?%>
+    <%= form.label :画像3 %><br/>
+    <img src=<%= @mainnote.image3 %> width="200" height="120"><br/>
+    <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %><br/>
+  <%else%>
+    <div>
       <%= form.label :画像3 %><br/>
-      <%= form.file_field :image3 %>
-  </div>
+      <%= form.file_field :image3 %><br/>
+    </div>
+  <%end%>
 
   <div>
     <%= form.submit %>
