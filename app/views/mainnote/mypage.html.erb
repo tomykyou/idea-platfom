@@ -1,10 +1,13 @@
-<%= link_to ' TOPへ', root_path %>
-<%= link_to "New Article", new_mainnote_path %>
-<%= link_to "マイページへ", mainnnote_mypage_path %>
-<%= link_to "このサイトについて", mainnnote_about_path %>
-<%= link_to "投稿者一覧へ", mainnnote_usershow_path %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
+<nav id="menuber">
+  <ul class="menu-text">
+    <li><%= link_to ' TOPへ', root_path %></li>
+    <li><%= link_to "New Article", new_mainnote_path %></li>
+    <li><%= link_to "マイページへ", mainnnote_mypage_path %></li>
+    <li><%= link_to "このサイトについて", mainnnote_about_path %></li>
+    <li><%= link_to "投稿者一覧へ", mainnnote_usershow_path %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+  </ul>
+</nav>
 <h2>「マイページ」</h2>
 
 <h2>一言</h2>

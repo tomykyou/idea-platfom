@@ -1,12 +1,30 @@
 // Place all the styles related to the mainnote controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-#gnav{
-    background-color: gray!important;
+#menuber{
+    text-align: center;
 }
-.inner{
-    display: flex!important;
+
+.menu-text{
+    display: flex;
+    margin: 0 ;
+    padding: 0 ;
 }
-#gnav li{
-    width: 200px
+
+#menuber li{
+    width: 100%;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    width: 10%; 
+}
+ 
+nav ul li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+ 
+nav li:hover{
+    border-bottom: 2px solid #FF7A37; 
 }
