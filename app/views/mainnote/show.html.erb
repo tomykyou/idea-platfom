@@ -5,7 +5,7 @@
     <li><%= link_to "マイページへ", mainnnote_mypage_path %></li>
     <li><%= link_to "このサイトについて", mainnnote_about_path %></li>
     <li><%= link_to "投稿者一覧へ", mainnnote_usershow_path %></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
 <h1><%=@mainnote.title%></h1>
