@@ -2,11 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 #gnav{
-    background-color: gray;
+    background-color: gray!important;
 }
 .inner{
-    display: flex;
+    display: flex!important;
 }
 #gnav li{
-    width: 200px;
+    width: 200px
 }

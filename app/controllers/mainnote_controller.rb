@@ -3,7 +3,6 @@ class MainnoteController < ApplicationController
 
   def top
     @mainnote = Mainnote.all
-    render layout: false 
   end
 
   def show
@@ -77,14 +76,12 @@ class MainnoteController < ApplicationController
 
   def usershow
     @user = User.all
-    render layout: false 
   end
 
   def userpg
       @user = User.find(params[:id])
       @mainnote = Mainnote.where(user_id: @user.id)
       @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
-      render layout: false 
   end
   
   private
