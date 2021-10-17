@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      mainnote: 投稿
+    attributes:
+      mainnote:
+        title: タイトル 
+        text: 詳細
+        image1: 画像1
+        image2: 画像2
+        image3: 画像3
