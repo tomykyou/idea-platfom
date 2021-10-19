@@ -12,6 +12,10 @@
 <h1>New</h1>
 
 <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
+  <div>
+    <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
+  </div>
+
   <% @mainnote.errors.full_messages_for(:text).each do |message| %>
     <div><%= message %></div>
   <% end %>
@@ -19,11 +23,6 @@
   <% @mainnote.errors.full_messages_for(:title).each do |message| %>
     <div><%= message %></div>
   <% end %>
-
-  <div>
-    <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
-  
-  </div>
   
   <div>
     <%= form.label :title %><br>

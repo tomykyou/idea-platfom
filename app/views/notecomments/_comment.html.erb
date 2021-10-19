@@ -6,34 +6,34 @@
     <img src=<%= user.image %> width="100" height="60">
   <% end %>
   <!--コメント入力時の改行を反映させる。nullの場合は何も表示させない。-->
-  <p><strong>Comment:</strong></p>
+  <p><strong>コメント</strong></p>
   <%if notecomment.comment.nil? %>
   <% else %>
       <p><%=safe_join(notecomment.comment.split("\n"),tag(:br))%></p>
   <%end %>
 
   <p>
-    <strong>将来性評価:</strong>
-    <%= notecomment.future_point %>pt
+    <strong>将来性評価</strong>
+    <%= notecomment.future_point %>ポイント
   </p>
   
   <p>
-    <strong>意外性評価:</strong>
-    <%= notecomment.surprisingly_point %>pt
+    <strong>意外性評価</strong>
+    <%= notecomment.surprisingly_point %>ポイント
   </p>
 
   <p>
-    <strong>実現性評価:</strong>
+    <strong>実現性評価</strong>
     
-    <%= notecomment.realization_point %>pt
+    <%= notecomment.realization_point %>ポイント
   </p>
   
   <!--コメントでログインしているユーザーIDと一致しているコメントのみ削除ができる。-->
   <% if notecomment.user_id == current_user.id %>
     <p>
-    <%= link_to 'Destroy Comment', [notecomment.mainnote, notecomment],
+    <%= link_to 'コメントを削除', [notecomment.mainnote, notecomment],
                 method: :delete,
-                data: { confirm: "Are you sure?" } %>
+                data: { confirm: "本当にコメントを削除しますか?" } %>
     </p>
   <% end %>
 <% end %>

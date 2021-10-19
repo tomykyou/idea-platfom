@@ -10,8 +10,10 @@
   </ul>
 </nav>
 
-<h1> <%= @user.username %>さんのページ</h1>
+<h1><%= @user.username %>さん</h1>
  <img src=<%= @user.image %> width="100" height="60">
+ <h2>一言</h2>
+ <p><%= @user.award%></p>
 <ul>
 <!--ポイントをview上で計算-->
 <% all_point=0%>
@@ -25,17 +27,17 @@
 <% end %>
 <!--DBに格納してもいいが更新処理に時間がかかるため下記やり方に変更-->
 <%all_point=future_point+surprisingly_point+realization_point%>
-<h3>あなたのランクは・・・・</h3>
+<h3>現在のアイデアランク</h3>
 <% if all_point<2 && all_point>=0%>
   <img src="/assets/Norank.png" width="100" height="100">
 <% elsif  all_point<4 && all_point>=2%>
   <img src="/assets/Bronze.png" width="100" height="100">
 <% elsif  all_point<6 && all_point>=4%>
-  <img src="/assets/Gold.png" width="100" height="100">
+  <img src="/assets/Silver.png" width="100" height="100">
 <% elsif  all_point<8 && all_point>=6%>
-  <img src="/assets/Diamond.png" width="100" height="100">
+  <img src="/assets/Gold.png" width="100" height="100">
 <% elsif all_point>=8%>
-  <h1>ダイヤモンドランク</h1>
+  <img src="/assets/Diamond.png" width="100" height="100">
 <%end%>
 
 <h3>これまでの獲得ポイント</h3>
@@ -47,10 +49,6 @@
 <strong>実現性</strong>
 <p><%=realization_point%>pt<p>
 
-<ul>
-  <% @mainnote.each do |mainnote| %>
-      <li>
-        <%= link_to mainnote.title, mainnote %>
-      </li>
-  <% end %>
-</ul>
+<% @mainnote.each do |mainnote| %>   
+  <%= link_to mainnote.title, mainnote %><br>
+<% end %>

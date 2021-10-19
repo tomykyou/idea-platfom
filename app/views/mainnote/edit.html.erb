@@ -9,26 +9,23 @@
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-<h1>Edit</h1>
-
+<h1>投稿更新ページ</h1>
 <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
   
   <% @mainnote.errors.full_messages_for(:text).each do |message| %>
     <div><%= message %></div>
   <% end %>
-  
   <% @mainnote.errors.full_messages_for(:title).each do |message| %>
     <div><%= message %></div>
   <% end %>
 
-       
   <div>
-    <%= form.label :title %><br>
+    <%= form.label :"タイトル" %><br>
     <%= form.text_area :title %>
   </div>
 
   <div>
-    <%= form.label :text %><br>
+    <%= form.label :"説明文" %><br>
     <%= form.text_area :text %>
   </div>
 
@@ -67,6 +64,6 @@
   <%end%>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit :"投稿を更新する" %>
   </div>
 <% end %>
