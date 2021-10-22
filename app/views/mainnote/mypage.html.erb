@@ -11,10 +11,14 @@
 </nav>
 <h2>「マイページ」</h2>
 
-<h1><%= @current_user.username %>さん</h1>
-<img src=<%= @current_user.image %> width="100" height="60">
-<h2>一言</h2>
-<p><%= current_user.award%></p>
+<strong><p><%= @current_user.username %>さん</strong></p>
+  <%if @current_user.image.blank? %>
+    <img src="/assets/Noimageicon.jpeg" width="100" height="60">
+  <% else %>
+    <img src=<%= @current_user.image %> width="100" height="60"> 
+  <%end%>
+<strong><p>一言</strong></p>
+<strong><p><%= current_user.award%></strong></p>
 <%= link_to ' ユーザー情報編集', edit_user_registration_path %>
 <!--ポイントをview上で計算-->
 <% all_point=0%>
@@ -29,7 +33,7 @@
 <% end %>
 
 <%all_point=future_point+surprisingly_point+realization_point%>
-<h3>現在のアイデアランク</h3>
+<strong><p>現在のアイデアランク</strong></p>
 <% if all_point<2 && all_point>=0%>
   <img src="/assets/Norank.png" width="100" height="100">
 <% elsif  all_point<4 && all_point>=2%>
@@ -37,15 +41,15 @@
 <% elsif  all_point<6 && all_point>=4%>
   <img src="/assets/Gold.png" width="100" height="100">
 <% elsif  all_point<8 && all_point>=6%>
-  <img src="/assets/Diamond.png" width="100" height="100">
+  <img src="/assets/Silver.png" width="100" height="100">
 <% elsif all_point>=8%>
-  <h1>ダイヤモンドランク</h1>
+  <img src="/assets/Diamond.png" width="100" height="100">
 <%end%>
 
-<h3>獲得ポイント総計</h3>
+<strong><p>獲得ポイント総計<strong><p>
 <p><%=all_point%>pt</p>
 
-<h3>種別獲得ポイント</h3>
+種別獲得ポイント<strong><p>
 
 <strong>欲しいポイント</strong>
 <p><%=future_point%>pt<p>
@@ -56,7 +60,7 @@
 <strong>面白さポイント</strong>
 <p><%=realization_point%>pt<p>
 
-<h3>あなたのアイデア一覧</h3>
+<strong><p>あなたのアイデア一覧</strong></p>
 <ul>
   <% @mainnote.each do |mainnote| %>
     <li>

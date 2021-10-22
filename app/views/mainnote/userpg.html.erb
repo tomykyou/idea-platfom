@@ -9,9 +9,12 @@
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-
-<h1><%= @user.username %>さん</h1>
- <img src=<%= @user.image %> width="100" height="60">
+<strong><p><%= @user.username %>さん<strong><p>
+  <%if @user.image.blank? %>
+    <img src="/assets/noimageicon.jpeg" width="100" height="60">
+  <% else %>
+    <img src=<%= @user.image %> width="100" height="60"> 
+  <%end%>
  <h2>一言</h2>
  <p><%= @user.award%></p>
 <ul>
@@ -40,11 +43,11 @@
   <img src="/assets/Diamond.png" width="100" height="100">
 <%end%>
 
-<h3>これまでの獲得ポイント</h3>
+<strong><p>これまでの獲得ポイント</strong></p>
 <p><%=all_point=0%>pt</p>
-<strong>将来性</strong>
+<strong><p>将来性</strong></p>
 <p><%=future_point%>pt<p>
-<strong>意外性</strong>
+<strong><p>意外性</strong></p>
 <p><%=surprisingly_point%>pt<p>
 <strong>実現性</strong>
 <p><%=realization_point%>pt<p>

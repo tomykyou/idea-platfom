@@ -10,16 +10,16 @@
   </ul>
 </nav>
 
-<h1><%=@mainnote.title%></h1>
+<strong><p><%=@mainnote.title%></strong></p>
 <% @user_mainnote.each do |user| %>
-  <p><%= user.username %></p>
+  <strong><p><%= user.username %></strong></p>
   <img src=<%= user.image %> width="100" height="60">
 <% end %>
 <% if @mainnote.user_id == current_user.id %>
-    <%= link_to "このアイデアを更新", edit_mainnote_path(@mainnote) %>
-    <%= link_to "このアイデアを削除", mainnote_path(@mainnote),
+    <strong><p><%= link_to "このアイデアを更新", edit_mainnote_path(@mainnote) %></strong></p>
+    <strong><p><%= link_to "このアイデアを削除", mainnote_path(@mainnote),
                     method: :delete,
-                    data: { confirm: "本当に削除しますか?" } %>
+                    data: { confirm: "本当に削除しますか?" } %></strong></p>
 
  <%end%> 
 <p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
@@ -51,15 +51,15 @@
   <%realization_point+=notecomment.realization_point%>
 <% end %>
 
-<h3>獲得ポイント</h3>
-<strong>将来性</strong>
+<strong><p>獲得ポイント</strong></p>
+<strong><p>将来性</strong></p>
 <p><%=future_point%>ポイント<p>
-<strong>意外性</strong>
+<<strong><p>意外性</strong></p>
 <p><%=surprisingly_point%>ポイント<p>
-<strong>実現性</strong>
+<strong><p>実現性</strong></p>
 <p><%=realization_point%>ポイント<p>
 
-<h2>コメント一覧</h2>
+<strong><p>コメント一覧</strong></p>
 <%= render "notecomments/comment" %>
 
 <!--コメントをしているかどうかの判定。rubyにはboolen型がないので文字列で判定をさせる。-->

@@ -9,7 +9,7 @@
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-<h1>投稿更新ページ</h1>
+<h2>投稿更新ページ</h2>
 <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
   
   <% @mainnote.errors.full_messages_for(:text).each do |message| %>
@@ -20,7 +20,7 @@
   <% end %>
 
   <div>
-    <%= form.label :"タイトル" %><br>
+    <strong><p><%= form.label :"タイトル" %></strong></p><br>
     <%= form.text_area :title %>
   </div>
 
@@ -31,34 +31,34 @@
 
   <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
   <%if @mainnote.image1.present?%>
-    <%= form.label :画像1 %><br/>
+    <strong><p><%= form.label :画像1 %></strong></p><br/>
     <img src=<%= @mainnote.image1 %> width="200" height="120"><br/>
     <%= form.submit value: "添付画像を消す",name: "delete_image1",class: "btn_send" %><br/>
   <%else%>
     <div>
-      <%= form.label :画像1 %><br/>
+      <strong><p><%= form.label :画像1 %></strong></p><br/>
       <%= form.file_field :image1%><br/>
     </div>
   <%end%>
  <!--画像２があれば表示して削除ボタンを表示。空ならフォームを表示-->
    <%if @mainnote.image2.present?%>
-    <%= form.label :画像2 %><br/>
+    <strong><p><%= form.label :画像2 %></strong></p><br/>
     <img src=<%= @mainnote.image2 %> width="200" height="120"><br/>
     <%= form.submit value: "添付画像を消す",name: "delete_image2",class: "btn_send" %><br/>
   <%else%>
     <div>
-      <%= form.label :画像2 %><br/>
+      <strong><p><%= form.label :画像2 %></strong></p><br/>
       <%= form.file_field :image2 %><br/>
     </div>
   <%end%>
  <!--画像３があれば表示して削除ボタンを表示。空ならフォームを表示-->
   <%if @mainnote.image3.present?%>
-    <%= form.label :画像3 %><br/>
+    <strong><p><%= form.label :画像3 %></strong></p><br/>
     <img src=<%= @mainnote.image3 %> width="200" height="120"><br/>
     <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %><br/>
   <%else%>
     <div>
-      <%= form.label :画像3 %><br/>
+      <strong><p><%= form.label :画像3 %></strong></p><br/>
       <%= form.file_field :image3 %><br/>
     </div>
   <%end%>
