@@ -9,9 +9,11 @@
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-
-<h1>ユーザー一覧</h1>
+<div class="title">
+  <h2>ユーザー一覧</h2>
+</div>
 <!--ユーザー一覧を表示。ログインしているユーザーにはマイページのリンクを表示させる。-->
+<div class="main-content">
 <ul>
   <% @user.each do |user| %>
     <% if user.id==current_user.id%>
@@ -27,3 +29,4 @@
     <% end %>  
   <% end %>
 </ul>
+</div>

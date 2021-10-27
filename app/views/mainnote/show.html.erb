@@ -2,80 +2,97 @@
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to 'HOME', root_path %></li>
-    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>
-    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
     <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path %></li>
+    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>   
     <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
+    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
 
-<strong><p><%=@mainnote.title%></strong></p>
-<% @user_mainnote.each do |user| %>
-  <strong><p><%= user.username %></strong></p>
-  <img src=<%= user.image %> width="100" height="60">
-<% end %>
-<% if @mainnote.user_id == current_user.id %>
-    <strong><p><%= link_to "このアイデアを更新", edit_mainnote_path(@mainnote) %></strong></p>
-    <strong><p><%= link_to "このアイデアを削除", mainnote_path(@mainnote),
-                    method: :delete,
-                    data: { confirm: "本当に削除しますか?" } %></strong></p>
+<div class="main-content">
+  <h2 class="show_content_title">「<%=@mainnote.title%>」</h2>
+  <div class="show_contents_border">
+  <!--ログインしているユーザーのみに更新削除をできるように設定。コントローラーでもできるが、ボタンを表示させたくないのでviewで条件を設定。-->
+  <% future_point=0%>
+  <% surprisingly_point=0%>
+  <% realization_point=0%>
 
- <%end%> 
-<p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
-  <%if @mainnote.image1.blank? %>
-    <img src="/assets/Noimage.png" width="200" height="120">
-  <% else %>
-    <img src=<%= @mainnote.image1 %> width="200" height="120">
-  <%end %>
-  
-  <%if @mainnote.image2.blank? %>
-    <img src="/assets/Noimage.png" width="200" height="120">
-  <% else %>
-    <img src=<%= @mainnote.image2 %> width="200" height="120">
-  <%end %>
-  
-  <%if @mainnote.image3.blank?%>
-    <img src="/assets/Noimage.png" width="200" height="120">
-  <% else %>
-    <img src=<%= @mainnote.image3 %> width="200" height="120">
-  <%end %>
-<!--ログインしているユーザーのみに更新削除をできるように設定。コントローラーでもできるが、ボタンを表示させたくないのでviewで条件を設定。-->
-<% future_point=0%>
-<% surprisingly_point=0%>
-<% realization_point=0%>
-
-<% @notecomment.each do |notecomment| %>
-  <%future_point+=notecomment.future_point%>
-  <%surprisingly_point+=notecomment.surprisingly_point%>
-  <%realization_point+=notecomment.realization_point%>
-<% end %>
-
-<strong><p>獲得ポイント</strong></p>
-<strong><p>将来性</strong></p>
-<p><%=future_point%>ポイント<p>
-<<strong><p>意外性</strong></p>
-<p><%=surprisingly_point%>ポイント<p>
-<strong><p>実現性</strong></p>
-<p><%=realization_point%>ポイント<p>
-
-<strong><p>コメント一覧</strong></p>
-<%= render "notecomments/comment" %>
-
-<!--コメントをしているかどうかの判定。rubyにはboolen型がないので文字列で判定をさせる。-->
-<%boolen='true'%>
-<% @notecomment.each do |notecomment| %>
-  <% if notecomment.user_id == current_user.id%>
-    <%boolen='あなたは既にこのアイデアへ評価を投稿しています'%>       
+  <% @notecomment.each do |notecomment| %>
+    <%future_point+=notecomment.future_point%>
+    <%surprisingly_point+=notecomment.surprisingly_point%>
+    <%realization_point+=notecomment.realization_point%>
   <% end %>
-<% end %>
 
-<% if @mainnote.user_id == current_user.id%>
-  <%boolen='自身のアイデアへ評価できません'%>
-<%end%>
+  <div class="show_top_contents">
+    <div class="show_top_content">
+      <% @user_mainnote.each do |user| %>
+      <div class="user_area">
+        <img src=<%= user.image %> class="user_icon">
+        <p><strong><%= user.username %></strong></p>
+      </div>  
+    <% end %>
+    </div>
+    <div class="show_top_content">
+      <h3>獲得ポイント</h3>
+      <div class="show_content_pointbar">
+        <p><strong>将来性 : </strong><%=future_point%>ポイント</p>
+        <p><strong>意外性 : </strong><%=surprisingly_point%>ポイント</p>
+        <p><strong>実現性 : </strong><%=realization_point%>ポイント</p>
+      </div>
+    </div>  
+  </div>
+    <%if @mainnote.image1.blank? %>
+      <img src="/assets/Noimage.png" class="show-content_image">
+    <% else %>
+      <img src=<%= @mainnote.image1 %> class="show-content_image">
+    <%end %>
+    
+    <%if @mainnote.image2.blank? %>
+      <img src="/assets/Noimage.png" class="show-content_image">
+    <% else %>
+      <img src=<%= @mainnote.image2 %> class="show-content_image">
+    <%end %>
+    
+    <%if @mainnote.image3.blank?%>
+      <img src="/assets/Noimage.png" class="show-content_image">
+    <% else %>
+      <img src=<%= @mainnote.image3 %> class="show-content_image">
+    <%end %>
+    <div class="show_content_text">
+      <p><strong>詳細</strong></p>
+      <p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
+    </div>
+    <div class="show_currentuser_contents">
+    <% if @mainnote.user_id == current_user.id %>
+        <div class="show_currentuser_content">
+          <p><strong><%= link_to "このアイデアを更新", edit_mainnote_path(@mainnote) %></strong></p>
+        </div>
+        <div class="show_currentuser_content">
+          <p><strong><%= link_to "このアイデアを削除", mainnote_path(@mainnote),method: :delete,data: { confirm: "本当に削除しますか?" } %></strong></p>
+        </div>
+    <%end%> 
+  </div>
+  </div>
+  
+  <h3>コメント一覧</h3>
+  <%= render "notecomments/comment" %>
 
-<%if boolen=='true'%>
-  <%= render "notecomments/form" %>
-<%else%>
-  <p><%=boolen%></p>
-<%end%>
+  <!--コメントをしているかどうかの判定。rubyにはboolen型がないので文字列で判定をさせる。-->
+  <%boolen='true'%>
+  <% @notecomment.each do |notecomment| %>
+    <% if notecomment.user_id == current_user.id%>
+      <%boolen='あなたは既にこのアイデアへ評価を投稿しています'%>       
+    <% end %>
+  <% end %>
+
+  <% if @mainnote.user_id == current_user.id%>
+    <%boolen='自身のアイデアへ評価できません'%>
+  <%end%>
+
+  <%if boolen=='true'%>
+    <%= render "notecomments/form" %>
+  <%else%>
+    <p><%=boolen%></p>
+  <%end%>
+</div>

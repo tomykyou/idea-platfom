@@ -2,19 +2,23 @@
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to 'HOME', root_path %></li>
-    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>
-    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
     <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path %></li>
+    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>   
     <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
+    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
 
-<strong><p><%= current_user.username%>のさんこんにちは！<strong><p>
+<div class="title">
+  <h2><%= current_user.username%>さんこんにちは！</h2>
+</div>
+<div class="main-content">
 <ul>
   <% @mainnote.each do |mainnote| %>
     <li>
-      <strong><p><%= link_to mainnote.title, mainnote %><strong><p>
+      <p class="top_title"><strong><%= link_to mainnote.title, mainnote %></strong></p>
     </li>
   <% end %>
 </ul>
+</div>

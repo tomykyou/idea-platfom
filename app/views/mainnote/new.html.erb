@@ -9,8 +9,11 @@
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-<h1>New</h1>
 
+<div class="title">
+  <h2>新規投稿</h2>
+</div>
+<div class="main-content">
 <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
   <div>
     <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
@@ -25,28 +28,27 @@
   <% end %>
   
   <div>
-    <strong><p><%= form.label :title %></strong></p><br>
+    <p><strong><%= form.label :title %></strong></p><br>
     <%= form.text_area :title %>
   </div>
   
   <div>
-    <strong><p><%= form.label :text %></strong></p><br>
+    <p><strong><%= form.label :text %></strong></p><br>
     <%= form.text_area :text %>
   </div>
-
-<strong><p>アイデアの図やイラストがあれば載せましょう。<strong><p>
+  <p><strong>アイデアの図やイラストがあれば載せましょう。<strong><p>
   <div>
-      <strong><p><%= form.label :画像1 %></strong></p><br/>
+      <p><strong><%= form.label :画像1 %></strong></p>
       <%= form.file_field :image1 %>
   </div>
 
   <div>
-      <strong><p><%= form.label :画像2 %></strong></p><br/>
+      <p><strong><%= form.label :画像2 %></strong></p>
       <%= form.file_field :image2 %>
   </div>
 
   <div>
-      <strong><p><%= form.label :画像3 %></strong></p><br/>
+      <p><strong><%= form.label :画像3 %></strong></p>
       <%= form.file_field :image3 %>
   </div>
 
@@ -54,5 +56,4 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<%= link_to ' TOPへ', root_path %>
+</div>
