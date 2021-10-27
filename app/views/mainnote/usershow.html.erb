@@ -13,7 +13,7 @@
   <h2>ユーザー一覧</h2>
 </div>
 <!--ユーザー一覧を表示。ログインしているユーザーにはマイページのリンクを表示させる。-->
-<div class="main-content">
+<div class="main-margin">
 <ul>
   <% @user.each do |user| %>
     <% if user.id==current_user.id%>

@@ -13,7 +13,7 @@
 <div class="title">
   <h2>新規投稿</h2>
 </div>
-<div class="main-content">
+<div class="main-margin">
 <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
   <div>
     <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>

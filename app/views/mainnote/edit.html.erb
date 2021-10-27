@@ -12,7 +12,7 @@
 <div class="title">
   <h2>投稿更新ページ</h2>
 </div>
-<div class="main-content">
+<div class="main-margin">
 <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
   
   <% @mainnote.errors.full_messages_for(:text).each do |message| %>

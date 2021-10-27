@@ -10,15 +10,18 @@
   </ul>
 </nav>
 
-<div class="title">
-  <h2><%= current_user.username%>さんこんにちは！</h2>
-</div>
-<div class="main-content">
-<ul>
-  <% @mainnote.each do |mainnote| %>
-    <li>
-      <p class="top_title"><strong><%= link_to mainnote.title, mainnote %></strong></p>
-    </li>
-  <% end %>
-</ul>
+<div class="main-margin">
+  <h2><%= current_user.username%>さんログイン中</h2>
+  <div class="main_border">
+    <ul>
+      <% @mainnote.each do |mainnote| %>
+        <li><p class="top_title"><strong><%= link_to mainnote.title, mainnote %></strong></p></li>
+        <%if mainnote.image1.blank? %>
+          <img src="/assets/Noimage.png" class="top-content_image">
+        <% else %>
+          <img src=<%= mainnote.image1 %> class="top-content_image">
+        <%end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
