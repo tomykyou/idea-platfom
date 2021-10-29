@@ -31,7 +31,7 @@
         <img src=<%= user.image %> class="user_icon">
         <p><strong><%= user.username %></strong></p>
       </div>  
-    <% end %>
+      <% end %>
     </div>
     <div class="show_top_content">
       <h3>獲得ポイント</h3>
@@ -82,12 +82,12 @@
   <%boolen='true'%>
   <% @notecomment.each do |notecomment| %>
     <% if notecomment.user_id == current_user.id%>
-      <%boolen='あなたは既にこのアイデアへ評価を投稿しています'%>       
+      <%boolen='※あなたは既にこのアイデアへ評価を投稿しています'%>       
     <% end %>
   <% end %>
 
   <% if @mainnote.user_id == current_user.id%>
-    <%boolen='自身のアイデアへ評価できません'%>
+    <%boolen='※自身のアイデアへ評価できません'%>
   <%end%>
 
   <%if boolen=='true'%>

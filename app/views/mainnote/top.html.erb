@@ -11,17 +11,21 @@
 </nav>
 
 <div class="main-margin">
-  <h2><%= current_user.username%>さんログイン中</h2>
+
+  <h2><%= current_user.username%>でログインしています</h2>
   <div class="main_border">
-    <ul>
       <% @mainnote.each do |mainnote| %>
-        <li><p class="top_title"><strong><%= link_to mainnote.title, mainnote %></strong></p></li>
+        <% @user_mainnote=User.where(id: mainnote.user_id) %>
+        <% @user_mainnote.each do |user| %>
+          <img src=<%= user.image %> class="user_icon">
+          <p><strong><%= user.username %></strong></p>
+        <%end%>
         <%if mainnote.image1.blank? %>
-          <img src="/assets/Noimage.png" class="top-content_image">
+            <img src="/assets/Noimage.png" class="top-content_image">
         <% else %>
-          <img src=<%= mainnote.image1 %> class="top-content_image">
+            <img src=<%= mainnote.image1 %> class="top-content_image">
         <%end %>
+        <p><strong><%= link_to mainnote.title, mainnote %></strong></p>
       <% end %>
-    </ul>
   </div>
 </div>

@@ -53,13 +53,9 @@ nav li:hover{
     padding: 30px 0px 0px 0px;
 }
 
-.top_title{
-    margin-left:100px;
-}
-
 .top-content_image{
-    width: 400px;
-    height: 300px;
+    width: 200px;
+    height: 120px;
     border: black;
     border: 1px solid #030303;
 }
@@ -125,7 +121,7 @@ nav li:hover{
 }
 .comment_border{
     padding: 20px;
-    border: 1px solid #333333;
+    border-bottom: 1px solid #333333;
     width: 1180px;
 }
 .comment_delete_submit{

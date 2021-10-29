@@ -9,24 +9,26 @@
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-<div class="title">
-  <h2>ユーザー一覧</h2>
-</div>
+
 <!--ユーザー一覧を表示。ログインしているユーザーにはマイページのリンクを表示させる。-->
 <div class="main-margin">
-<ul>
-  <% @user.each do |user| %>
-    <% if user.id==current_user.id%>
-      <li>
-       <%= link_to current_user.username, mainnnote_mypage_path %>
-      </li>
-    <% else %>
-      <li>
-        <a href="userpg/<%= user.id %>">
-          <%= user.username %>
-        </a>
-      </li>
-    <% end %>  
-  <% end %>
-</ul>
+  <h2>ユーザー一覧</h2>
+  <div class="main_border">
+  <ul>
+    <% @user.each do |user| %>
+      <% if user.id == current_user.id%>
+        <img src = <%= current_user.image %> class="user_icon">
+        <%= link_to current_user.username, mainnnote_mypage_path %>
+      <% else %>
+        <%if user.image.blank? %>
+          <img src="/assets/Noimageicon.jpeg" class="user_icon">
+        <% else %>
+          <img src=<%= user.image %>  class="user_icon">
+        <%end %>
+        <a href="userpg/<%= user.id %>"><%= user.username %></a>
+      <% end %>  
+      <br>
+    <% end %>
+  </ul>
+  </div>
 </div>

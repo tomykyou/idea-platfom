@@ -1,3 +1,5 @@
+
+<%if @notecomment.exists?%>
 <% @mainnote.notecomments.each do |notecomment| %>
   <!--コントローラー上で行うとエラーが出るためview上でユーザー情報を取得。コメントテーブルのユーザーIDをキーにしてユーザーテーブルのユーザ名とアイコンを取得-->
   <% @user_comment= User.where(id: notecomment.user_id)%>
@@ -21,7 +23,7 @@
         <div class="comnent_textbar">
           <!--コメント入力時の改行を反映させる。nullの場合は何も表示させない。-->
           <%if notecomment.comment.blank? %>
-              <p>コメントの記載はありません。</p>
+              <p>コメントなし</p>
           <% else %>
               <p><%=safe_join(notecomment.comment.split("\n"),tag(:br))%></p>
           <%end %>
@@ -29,11 +31,14 @@
       </div>  
       <div class="comment_delete_submit">  
         <% if notecomment.user_id == current_user.id %>
-          <p><%= link_to 'コメントを削除', [notecomment.mainnote, notecomment],method: :delete,data: { confirm: "本当にコメントを削除しますか?" } %></p>
+          <p><%= link_to '評価を削除', [notecomment.mainnote, notecomment],method: :delete,data: { confirm: "本当にコメントを削除しますか?" } %></p>
         <% end %>    
       </div>
       <!--コメントでログインしているユーザーIDと一致しているコメントのみ削除ができる。-->
     </div>
   </div>
 <% end %>
+<%else%>
+  <p>まだ評価はありません。</p>
+<%end%>
 
