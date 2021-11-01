@@ -43,7 +43,6 @@ nav li:hover{
 }
 
 .main_border{
-    border-bottom:1px solid black;
     border-top:1px solid black;
     padding: 30px 0px 0px 0px;
 }
@@ -134,14 +133,14 @@ nav li:hover{
 
 /*ユーザー一覧のcss*/
 .userlist_user_area{
+    width:200px;
+    height:200px;
     overflow: hidden;
-    display: flex;
-    align-items: center;  
+    float: left;
 }
 
 .userlist_user_content{
-    float: left;
-    margin-right:20px;
+    text-align: center;
 }
 
 

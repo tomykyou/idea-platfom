@@ -18,24 +18,18 @@
         <% if user.id == current_user.id%>
           <div class="userlist_user_content">
             <img src = <%= current_user.image %> class="user_icon">
-          </div>
-          <div class="userlist_user_content"> 
-            <%= link_to current_user.username, mainnnote_mypage_path %>
+            <p><%= link_to current_user.username, mainnnote_mypage_path %></p>
           </div>
         <% else %>
           <%if user.image.blank? %>
             <div class="userlist_user_content">
               <img src="/assets/Noimageicon.jpeg" class="user_icon">
-            </div>
-            <div class="userlist_user_content">
-              <a href="userpg/<%= user.id %>"><%= user.username %></a>
+              <p><a href="userpg/<%= user.id %>"><%= user.username %></a></p>
             </div>
           <% else %>
             <div class="userlist_user_content">
               <img src=<%= user.image %>  class="user_icon">
-            </div>
-            <div class="userlist_user_content">
-              <a href="userpg/<%= user.id %>"><%= user.username %></a>
+              <p><a href="userpg/<%= user.id %>"><%= user.username %></a></p>
             </div>
           <%end %>
         <% end %>
