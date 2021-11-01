@@ -132,6 +132,17 @@ nav li:hover{
     overflow-wrap: break-word;
 }
 
+/*ユーザー一覧のcss*/
+.userlist_user_area{
+    overflow: hidden;
+    display: flex;
+    align-items: center;  
+}
+
+.userlist_user_content{
+    float: left;
+    margin-right:20px;
+}
 
 
 /*コメントのcss*/

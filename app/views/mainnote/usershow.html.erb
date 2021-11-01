@@ -13,21 +13,34 @@
 <div class="main-margin">
   <h2>ユーザー一覧</h2>
   <div class="main_border">
-  <ul>
-    <% @user.each do |user| %>
-      <% if user.id == current_user.id%>
-        <img src = <%= current_user.image %> class="user_icon">
-        <%= link_to current_user.username, mainnnote_mypage_path %>
-      <% else %>
-        <%if user.image.blank? %>
-          <img src="/assets/Noimageicon.jpeg" class="user_icon">
+      <% @user.each do |user| %>
+        <div class="userlist_user_area">
+        <% if user.id == current_user.id%>
+          <div class="userlist_user_content">
+            <img src = <%= current_user.image %> class="user_icon">
+          </div>
+          <div class="userlist_user_content"> 
+            <%= link_to current_user.username, mainnnote_mypage_path %>
+          </div>
         <% else %>
-          <img src=<%= user.image %>  class="user_icon">
-        <%end %>
-        <a href="userpg/<%= user.id %>"><%= user.username %></a>
-      <% end %>  
-      <br>
-    <% end %>
-  </ul>
+          <%if user.image.blank? %>
+            <div class="userlist_user_content">
+              <img src="/assets/Noimageicon.jpeg" class="user_icon">
+            </div>
+            <div class="userlist_user_content">
+              <a href="userpg/<%= user.id %>"><%= user.username %></a>
+            </div>
+          <% else %>
+            <div class="userlist_user_content">
+              <img src=<%= user.image %>  class="user_icon">
+            </div>
+            <div class="userlist_user_content">
+              <a href="userpg/<%= user.id %>"><%= user.username %></a>
+            </div>
+          <%end %>
+        <% end %>
+        </div>  
+      <% end %>
+
   </div>
 </div>
