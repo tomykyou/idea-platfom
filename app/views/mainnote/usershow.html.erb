@@ -2,14 +2,13 @@
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to 'HOME', root_path %></li>
-    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>
-    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
     <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path %></li>
+    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>   
     <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
+    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
     <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
   </ul>
 </nav>
-
 <!--ユーザー一覧を表示。ログインしているユーザーにはマイページのリンクを表示させる。-->
 <div class="main-margin">
   <h2>ユーザー一覧</h2>
