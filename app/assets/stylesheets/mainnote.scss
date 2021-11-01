@@ -14,6 +14,7 @@
 #menuber li{
     width: 100%;
 }
+
 nav ul li{
     list-style: none;
     display: inline-block;
@@ -36,12 +37,6 @@ nav li:hover{
     height: 80px;
 }
 
-.user_area{
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-}
-
 .main-margin{
     margin-left:100px;
     width: 1300px;
@@ -60,10 +55,36 @@ nav li:hover{
     border: 1px solid #030303;
 }
 
+.top_contents{
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    padding:20px;
+}
+
+.top_user_area{
+    vertical-align: middle;
+    width: 400px;
+    float: right;
+    display: flex;
+    align-items: center;  
+}
+
+.top_user_content{
+    float: right;
+    margin-left: 20px;  
+}
+
+.top_content{
+    display: table-cell;
+    float: left;
+    margin-left: 50px;
+}
+
 /*showページのcss*/
 .show_content_title{
     font-size: 40px;
 }
+
 .show_top_contents{
  overflow: hidden;
 }
@@ -71,6 +92,17 @@ nav li:hover{
 .show_top_content{
     float: left;
     margin-right: 100px;
+}
+
+.show_user_area{
+    overflow: hidden;
+    display: flex;
+    align-items: center;  
+}
+
+.show_user_content{
+    float: left;
+    margin-right: 20px;
 }
 
 .show_currentuser_contents{
@@ -100,6 +132,8 @@ nav li:hover{
     overflow-wrap: break-word;
 }
 
+
+
 /*コメントのcss*/
 .comment_pointbar p{
     display: inline-block;
@@ -117,12 +151,22 @@ nav li:hover{
 
 .comment_content{
     float: left;
-    margin-left: 50px;
 }
+
 .comment_border{
     padding: 20px;
     border-bottom: 1px solid #333333;
     width: 1180px;
+}
+
+.comment_user_area{
+    display: flex;
+    align-items: center;  
+}
+
+.comment_user_content{
+    float: left;
+    margin-right: 20px;
 }
 .comment_delete_submit{
 float: right;

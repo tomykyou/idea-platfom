@@ -3,17 +3,18 @@
 <% @mainnote.notecomments.each do |notecomment| %>
   <!--コントローラー上で行うとエラーが出るためview上でユーザー情報を取得。コメントテーブルのユーザーIDをキーにしてユーザーテーブルのユーザ名とアイコンを取得-->
   <% @user_comment= User.where(id: notecomment.user_id)%>
-  <div class="comment_border">
-    <div class="comment_contents">
-      <div class="comment_content">
-        <% @user_comment.each do |user| %>
-          <div class="user_area">
-            <img src=<%= user.image %> class="user_icon">
-            <p><strong><%= user.username %>さん</strong></p>
-          </div>
-        <% end %>
-      </div> 
-
+  <div class="comment_border"> 
+    <div class="comment_user_area">
+      <% @user_comment.each do |user| %>
+        <div class="comment_user_content">  
+          <img src=<%= user.image %> class="user_icon">
+        </div>
+        <div class="comment_user_content">  
+          <p><strong><%= user.username %>さん</strong></p>
+        </div>
+      <% end %>
+    </div>  
+    <div class="comment_contents"> 
       <div class="comment_content">
         <div class="comment_pointbar">
           <p><strong>将来性評価:</strong><%= notecomment.future_point %>ポイント</p>  
