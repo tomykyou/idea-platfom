@@ -11,35 +11,34 @@
 </nav>
 
 <div class="main-margin">
-  <h2><%= current_user.username%>でログインしています</h2>
+  <h2>HOME</h2>
   <div class="main_border">
     <% @mainnote.each do |mainnote| %>
     <div class="top_contents">
-      <div class="top_content">
+      <div class="top_content_border">
+      <div class="top_user_contents">
+        <% @user_mainnote=User.where(id: mainnote.user_id) %>
+        <% @user_mainnote.each do |user| %>
+          <div class="top_user_content">
+          <%if user.image.blank? %>
+            <img src="/assets/Noimageicon.jpeg" class="top_user_icon">
+          <% else %>
+          <img src=<%= user.image %>  class="top_user_icon">
+          <%end %>
+        </div>
+        <div class="top_user_content">
+          <p><a href="/mainnnote/userpg/<%= user.id %>"><%= user.username %></a><p>
+        </div>
+        <%end%>
+        </div>
+
         <%if mainnote.image1.blank? %>
             <img src="/assets/Noimage.png" class="top-content_image">
         <% else %>
             <img src=<%= mainnote.image1 %> class="top-content_image">
         <%end %>
-      </div>
-
-      <div class="top_content">
         <p><strong><%= link_to mainnote.title, mainnote %></strong></p>
-      </div>
-      
-      <div class="top_user_area">
-        <% @user_mainnote=User.where(id: mainnote.user_id) %>
-        <% @user_mainnote.each do |user| %>
-          <%if user.image.blank? %>
-            <img src="/assets/Noimageicon.jpeg" class="user_icon">
-          <% else %>
-          <img src=<%= user.image %>  class="user_icon">
-          <%end %>
-          <div class="top_user_content">
-            <p><a href="/mainnnote/userpg/<%= user.id %>"><%= user.username %></a><p>
-          </div>
-        <%end%>
-      </div>
+    </div>
     </div>
   <% end %>
   </div>

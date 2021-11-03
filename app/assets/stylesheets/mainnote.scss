@@ -32,7 +32,7 @@ nav li:hover{
 
 .user_icon{
     border-radius: 50%;
-    border: 1px solid #030303;
+    border: 1px solid silver;
     width: 80px;
     height: 80px;
 }
@@ -47,36 +47,41 @@ nav li:hover{
     padding: 30px 0px 0px 0px;
 }
 
+/*topページのcss*/
+.top_content_border{
+    border:1px solid silver;
+   }
+
 .top-content_image{
     width: 200px;
     height: 120px;
     border: black;
-    border: 1px solid #030303;
+    border: 1px solid silver;
+}
+
+.top_user_icon{
+    border-radius: 50%;
+    border: 1px solid silver;
+    width: 30px;
+    height: 30px;
 }
 
 .top_contents{
-    overflow: hidden;
-    border-bottom: 1px solid black;
-    padding:20px;
+    float: left;
+    text-align: center;
+    margin-left: 50px; 
+    margin-bottom: 50px;
+    width: 250px; 
 }
 
-.top_user_area{
-    vertical-align: middle;
-    width: 400px;
-    float: right;
+.top_user_contents{
+    overflow: hidden;
     display: flex;
     align-items: center;  
 }
 
 .top_user_content{
-    float: right;
-    margin-left: 20px;  
-}
-
-.top_content{
-    display: table-cell;
     float: left;
-    margin-left: 50px;
 }
 
 /*showページのcss*/
@@ -93,7 +98,7 @@ nav li:hover{
     margin-right: 100px;
 }
 
-.show_user_area{
+.show_user_contents{
     overflow: hidden;
     display: flex;
     align-items: center;  
