@@ -48,6 +48,8 @@ nav li:hover{
 }
 
 /*topページのcss*/
+
+/*何回も使いそう*/
 .top_content_border{
     border:1px solid silver;
    }
@@ -83,6 +85,8 @@ nav li:hover{
 .top_user_content{
     float: left;
 }
+/*何回も使いそう終わり*/
+
 
 /*showページのcss*/
 .show_content_title{
@@ -148,6 +152,51 @@ nav li:hover{
     text-align: center;
 }
 
+/*Userpgのcss*/
+.userpg_contents{
+    overflow: hidden;
+    width: 50%;
+    margin: 0 auto;
+    
+}
+
+.userpg_content{
+    float:left;
+    width: 400px;
+    text-align: center;
+}
+
+.userpg_user_icon{
+    border-radius: 50%;
+    border: 1px solid silver;
+    width: 150px;
+    height: 150px;
+}
+
+.userpg_user_name{
+    font-size: 30px;
+}
+
+.rank_contents{
+    overflow: hidden;
+    width: 15%;
+    margin: 0 auto;
+}
+
+.userpg_rank{
+    width: 200px;
+    height: 200px;
+}
+
+.userpg_pointbar{
+    text-align: center;
+}
+
+.userpg_pointbar p{
+    display: inline-block;
+    width: 200px;
+}
+
 
 /*コメントのcss*/
 .comment_pointbar p{
@@ -183,6 +232,7 @@ nav li:hover{
     float: left;
     margin-right: 20px;
 }
+
 .comment_delete_submit{
-float: right;
+    float: right;
 }
