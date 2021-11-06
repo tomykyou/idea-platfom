@@ -13,50 +13,89 @@
 <div class="title">
   <h2><%= @user.username %>さんのページ<h2>
 </div>
-  <%if @user.image.blank? %>
-    <img src="/assets/noimageicon.jpeg" width="100" height="60">
-  <% else %>
-    <img src=<%= @user.image %> width="100" height="60"> 
-  <%end%>
- <h2>一言</h2>
- <p><%= @user.award%></p>
-<ul>
 <!--ポイントをview上で計算-->
 <% all_point=0%>
 <% future_point=0%>
 <% surprisingly_point=0%>
 <% realization_point=0%>
+<!--自身の投稿に紐づくコメントの個数分ポイントを合計する-->
 <% @notecomment.each do |notecomment| %>
     <%future_point+=notecomment.future_point%>
     <%surprisingly_point+=notecomment.surprisingly_point%>
     <%realization_point+=notecomment.realization_point%>
 <% end %>
-<!--DBに格納してもいいが更新処理に時間がかかるため下記やり方に変更-->
-<%all_point=future_point+surprisingly_point+realization_point%>
-<p><strong>現在のアイデアランク</strong></p>
-<% if all_point<2 && all_point>=0%>
-  <img src="/assets/Norank.png" width="100" height="100">
-<% elsif  all_point<4 && all_point>=2%>
-  <img src="/assets/Bronze.png" width="100" height="100">
-<% elsif  all_point<6 && all_point>=4%>
-  <img src="/assets/Silver.png" width="100" height="100">
-<% elsif  all_point<8 && all_point>=6%>
-  <img src="/assets/Gold.png" width="100" height="100">
-<% elsif all_point>=8%>
-  <img src="/assets/Diamond.png" width="100" height="100">
-<%end%>
 
-<strong><p>これまでの獲得ポイント</strong></p>
-<p><%=all_point=0%>pt</p>
-<p><strong>将来性</strong></p>
-<p><%=future_point%>pt</p>
-<p><strong>意外性</strong></p>
-<p><%=surprisingly_point%>pt</p>
-<p><strong>実現性</strong></p>
-<p><%=realization_point%>pt</p>
-
-<p><strong>過去のアイデア一覧</strong></p>
-<% @mainnote.each do |mainnote| %>   
-  <%= link_to mainnote.title, mainnote %><br>
-<% end %>
+<div class="rank_contents">
+    <p><strong>現在のアイデアランク</strong></p>
+    <% if all_point<2 && all_point>=0%>
+      <img src="/assets/Norank.png" width="100" height="100" class="userpg_rank">
+    <% elsif  all_point<4 && all_point>=2%>
+      <img src="/assets/Bronze.png" width="100" height="100" class="userpg_rank">
+    <% elsif  all_point<6 && all_point>=4%>
+      <img src="/assets/Gold.png" width="100" height="100" class="userpg_rank">
+    <% elsif  all_point<8 && all_point>=6%>
+      <img src="/assets/Silver.png" width="100" height="100" class="userpg_rank">
+    <% elsif all_point>=8%>
+      <img src="/assets/Diamond.png" width="100" height="100" class="userpg_rank">
+    <%end%>
 </div>
+
+<div class="userpg_pointbar">
+    <p><strong>獲得ポイント</strong></p>
+    <p><strong>将来性 : </strong><%=future_point%>ポイント</p>
+    <p><strong>意外性 : </strong><%=surprisingly_point%>ポイント</p>
+    <p><strong>実現性 : </strong><%=realization_point%>ポイント</p>
+</div>
+
+
+<div class="main_border">
+  <div class="userpg_contents">
+    <div class="userpg_content">
+      <%if @user.image.blank? %>
+        <img src="/assets/Noimageicon.jpeg" width="100" height="60" class="userpg_user_icon">
+      <% else %>
+        <img src=<%= @user.image %> width="100" height="60" class="userpg_user_icon"> 
+      <%end%>
+      <p class="userpg_user_name"><strong><%= @user.username %></strong></p>
+    </div>
+      <p><strong>職業:</strong>学生</p>
+      <p><strong>得意ジャンル:</strong>科学</p>
+      <p><strong>一言:</strong></p>
+      <%if @user.award.blank? %>
+        <p>一言はありません</p>
+      <% else %>
+        <p><%= @user.award%></p>
+      <%end%>  
+    </div>
+
+  <p><strong>投稿したアイデア一覧</strong></p>
+      <% @mainnote.each do |mainnote| %>
+      <div class="top_contents">
+      <div class="top_content_border">
+      <div class="top_user_contents">
+        <% @user_mainnote=User.where(id: mainnote.user_id) %>
+        <% @user_mainnote.each do |user| %>
+          <div class="top_user_content">
+          <%if user.image.blank? %>
+            <img src="/assets/Noimageicon.jpeg" class="top_user_icon">
+          <% else %>
+          <img src=<%= user.image %>  class="top_user_icon">
+          <%end %>
+        </div>
+        <div class="top_user_content">
+          <p><a href="/mainnnote/userpg/<%= user.id %>"><%= user.username %></a><p>
+        </div>
+        <%end%>
+        </div>
+
+        <%if mainnote.image1.blank? %>
+            <img src="/assets/Noimage.png" class="top-content_image">
+        <% else %>
+            <img src=<%= mainnote.image1 %> class="top-content_image">
+        <%end %>
+        <p><strong><%= link_to mainnote.title, mainnote %></strong></p>
+    </div>
+    </div>
+      <% end %>
+  </div>
+  <div>
