@@ -154,23 +154,25 @@ nav li:hover{
 
 /*Userpgのcss*/
 .userpg_contents{
+    padding: 40px 40px 0px;
+    background-color: #EEEEEE;
     overflow: hidden;
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
-    
+    border-radius: 10px;
 }
 
 .userpg_content{
     float:left;
-    width: 400px;
+    width: 600px;
     text-align: center;
 }
 
 .userpg_user_icon{
     border-radius: 50%;
     border: 1px solid silver;
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
 }
 
 .userpg_user_name{
@@ -179,13 +181,14 @@ nav li:hover{
 
 .rank_contents{
     overflow: hidden;
-    width: 15%;
+    width: 500px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .userpg_rank{
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
 }
 
 .userpg_pointbar{
