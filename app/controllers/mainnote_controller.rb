@@ -1,5 +1,5 @@
 class MainnoteController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top,:about]
 
   def top
     @mainnote = Mainnote.all
@@ -76,6 +76,10 @@ class MainnoteController < ApplicationController
 
   def usershow
     @user = User.all
+  end
+
+  def about
+
   end
 
   def userpg

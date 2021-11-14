@@ -6,15 +6,16 @@
     </ul>
     <ul class="menu-text">
       <li><%= link_to 'HOME', root_path %></li>
-      <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path(resource_name) %></li>
-      <li><%= link_to "MAKE NEW IDEA", new_mainnote_path(resource_name) %></li>   
-      <li><%= link_to "USER LIST", mainnnote_usershow_path(resource_name) %></li>
+      <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path  %></li>
+      <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>   
+      <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
   </ul>
 </nav>
 
 <div class="main-margin">
   <h1>工夫ファクトリーログイン</h1>
   <div class="main_border">
+  <p>まずはログイン、もしくは新規登録しましょう！</p>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :email %><br />
