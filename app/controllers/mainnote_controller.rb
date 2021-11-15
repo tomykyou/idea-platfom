@@ -59,6 +59,7 @@ class MainnoteController < ApplicationController
     end  
   end
 
+
   def destroy
     @mainnote = Mainnote.find(params[:id])
     if @mainnote.user_id != current_user.id
