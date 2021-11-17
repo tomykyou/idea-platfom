@@ -38,20 +38,20 @@
     <p><strong><%= form.label :text %></strong></p><br>
     <%= form.text_area :text %>
   </div>
-  <p><strong>アイデアの図やイラストがあれば載せましょう。<strong><p>
+  <p><strong>図やイラストがあれば載せましょう。jpg,jpeg,pngのみ対応しています。<strong><p>
   <div>
       <p><strong><%= form.label :画像1 %></strong></p>
-      <%= form.file_field :image1 %>
+      <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png'%>
   </div>
 
   <div>
       <p><strong><%= form.label :画像2 %></strong></p>
-      <%= form.file_field :image2 %>
+      <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
   </div>
 
   <div>
       <p><strong><%= form.label :画像3 %></strong></p>
-      <%= form.file_field :image3 %>
+      <%= form.file_field :image3 ,accept: 'image/jpg,image/jpeg,image/png'%>
   </div>
 
   <div>

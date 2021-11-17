@@ -35,6 +35,7 @@
     <%= form.text_area :text %>
   </div>
 
+  <p><strong>jpg,jpeg,pngのみ対応しています。</strong></p>
   <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
   <%if @mainnote.image1.present?%>
     <p><strong><%= form.label :画像1 %></strong></p><br/>
@@ -43,7 +44,7 @@
   <%else%>
     <div>
       <p><strong><%= form.label :画像1 %></strong></p><br/>
-      <%= form.file_field :image1%><br/>
+      <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png' %><br/>
     </div>
   <%end%>
  <!--画像２があれば表示して削除ボタンを表示。空ならフォームを表示-->
@@ -54,7 +55,7 @@
   <%else%>
     <div>
       <p><strong><%= form.label :画像2 %></strong></p><br/>
-      <%= form.file_field :image2 %><br/>
+      <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%><br/>
     </div>
   <%end%>
  <!--画像３があれば表示して削除ボタンを表示。空ならフォームを表示-->
@@ -64,7 +65,7 @@
     <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %><br/>
   <%else%>
     <div>
-      <p><strong><%= form.label :画像3 %></strong></p><br/>
+      <p><strong><%= form.label :画像3 ,accept: 'image/jpg,image/jpeg,image/png'%></strong></p><br/>
       <%= form.file_field :image3 %><br/>
     </div>
   <%end%>
