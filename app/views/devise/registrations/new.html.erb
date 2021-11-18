@@ -29,7 +29,7 @@
 
   <div class="field">
     <p><strong><%= f.label :プロフィール画像 %><br/></strong></p>
-    <%= f.file_field :image %>
+    <%= f.file_field :image ,accept: 'image/jpg,image/jpeg,image/png' %>
   </div>
   
   <div class="field">
