@@ -11,11 +11,11 @@
     <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-
+<div class="main-margin">
 <div class="title">
   <h2>投稿更新ページ</h2>
 </div>
-<div class="main-margin">
+<div class="main_border">
 <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
   
   <% @mainnote.errors.full_messages_for(:text).each do |message| %>
@@ -35,7 +35,7 @@
     <%= form.text_area :text %>
   </div>
 
-  <p><strong>jpg,jpeg,pngのみ対応しています。</strong></p>
+  <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。</strong></p>
   <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
   <%if @mainnote.image1.present?%>
     <p><strong><%= form.label :画像1 %></strong></p><br/>
@@ -74,4 +74,5 @@
     <%= form.submit :"投稿を更新する" %>
   </div>
 <% end %>
+</div>
 </div>
