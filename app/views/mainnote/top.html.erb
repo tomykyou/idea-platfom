@@ -1,12 +1,12 @@
 <h1>IDEA FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
-    <%if current_user==nil%> 
-    <li><%= link_to "ログイン", new_session_path(resource_name) %><br /></li>   
+    <%if current_user==nil%>    
     <li><%= link_to "新機登録", new_registration_path(resource_name) %><br /></li>
+    <li><%= link_to "ログイン", new_session_path(resource_name) %><br /></li>
   <%else%>
-    <li><%= link_to "MYPAGE", mainnnote_mypage_path %></li>
-    <li><%= link_to "LOGOUT", destroy_user_session_path, method: :get %></li>
+    <li><%= link_to "マイページ", mainnnote_mypage_path %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :get %></li>
   <%end%>
   </ul>
   <ul class="menu-text">
