@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   mount_uploader :image, ImageUploader
+  validates :username,length: {maximum:10}, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          has_many :mainnotes, dependent: :destroy

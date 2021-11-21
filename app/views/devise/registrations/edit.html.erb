@@ -15,22 +15,24 @@
   <h1>ユーザー情報更新</h1>
   <div class="main_border">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
-    <p><strong><%= f.label :ユーザーネーム %></strong></p>
+    <p><strong><%= f.label :ユーザー名 %></strong></p>
     <%= f.text_field :username, class: "form-control" %>
   </div>
+  <% resource.errors.full_messages_for(:username).each do |message| %>
+    <%= message %>
+  <% end %>
 
   <!--ユーザーのアイコンフォルダの有無で判定させる。現在のアバター、アバターの再設定、アバター削除の枠を作成-->
-    <%if @current_user.image.present?%>
-      <p><strong>現在のアイコン</strong></p>
-      <img src=<%= @current_user.image %> width="100" height="60">
-      <!--<h3>アイコンを削除　※チェックを入れるとアイコンは消えます</h3>
-      <%= f.check_box :remove_image %><br/>-->
-      <p><strong>アイコンを変更　※jpg,jpeg,pngのみ対応しています。</strong></p>
-      <div class="field">
-        <%= f.file_field :image %>
-      </div>
+  <%if @current_user.image.present?%>
+    <p><strong>現在のアイコン</strong></p>
+    <img src=<%= @current_user.image %> width="100" height="60">
+    <!--<h3>アイコンを削除　※チェックを入れるとアイコンは消えます</h3>
+    <%= f.check_box :remove_image %><br/>-->
+    <p><strong>アイコンを変更　※jpg,jpeg,pngのみ対応しています。</strong></p>
+    <div class="field">
+      <%= f.file_field :image %>
+    </div>
   <%else%>
     <p><strong>アイコンを設定</strong></p>
     <div class="field">
