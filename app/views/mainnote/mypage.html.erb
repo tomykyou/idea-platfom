@@ -1,14 +1,14 @@
-<h1>IDEA FACTORY</h1>
+<h1>工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to "マイページ", mainnnote_mypage_path %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :get %></li>
   </ul>
   <ul class="menu-text">
-    <li><%= link_to 'HOME', root_path %></li>
-    <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path %></li>
-    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>   
-    <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
+    <li><%= link_to 'トップ', root_path %></li>
+    <li><%= link_to "工夫FACTORYとは？", mainnnote_about_path %></li>
+    <li><%= link_to "新規工夫投稿", new_mainnote_path %></li>   
+    <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
 
@@ -32,7 +32,7 @@
 
 
 <div class="rank_contents">
-    <p><strong>現在のアイデアランク</strong></p>
+    <p><strong>現在の工夫職人ランク</strong></p>
     <% if all_point<2 && all_point>=0%>
       <img src="/assets/Norank.png" class="userpg_rank">
     <% elsif  all_point<4 && all_point>=2%>
@@ -64,13 +64,13 @@
       <p class="userpg_user_name"><strong><%= @current_user.username %></strong></p>
     </div>
     <p><strong>職業:</strong>学生</p>
-    <p><strong>得意ジャンル:</strong>科学</p>
+    <p><strong>得意ジャンル:</strong></p>
     <p><strong>一言:</strong></p>
     <p><%= current_user.award%></p>
     <%= link_to ' ユーザー情報編集', edit_user_registration_path %>
   </div>
 
-    <p><strong>投稿したアイデア一覧</strong></p>
+    <p><strong>投稿した工夫一覧</strong></p>
     <div class="main_border">
       <% @mainnote.each do |mainnote| %>
         <div class="top_contents">

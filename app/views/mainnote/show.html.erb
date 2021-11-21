@@ -1,17 +1,16 @@
-<h1>IDEA FACTORY</h1>
+<h1>工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to "マイページ", mainnnote_mypage_path %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :get %></li>
   </ul>
   <ul class="menu-text">
-    <li><%= link_to 'HOME', root_path %></li>
-    <li><%= link_to "ABOUT IDEA FACTORY", mainnnote_about_path %></li>
-    <li><%= link_to "MAKE NEW IDEA", new_mainnote_path %></li>   
-    <li><%= link_to "USER LIST", mainnnote_usershow_path %></li>
+    <li><%= link_to 'トップ', root_path %></li>
+    <li><%= link_to "工夫FACTORYとは？", mainnnote_about_path %></li>
+    <li><%= link_to "新規工夫投稿", new_mainnote_path %></li>   
+    <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-
 <div class="main-margin">
   <h2 class="show_content_title">「<%=@mainnote.title%>」</h2>
   <div class="main_border">
@@ -71,10 +70,10 @@
     <div class="show_currentuser_contents">
     <% if @mainnote.user_id == current_user.id %>
         <div class="show_currentuser_content">
-          <p><strong><%= link_to "このアイデアを更新", edit_mainnote_path(@mainnote) %></strong></p>
+          <p><strong><%= link_to "この工夫を更新", edit_mainnote_path(@mainnote) %></strong></p>
         </div>
         <div class="show_currentuser_content">
-          <p><strong><%= link_to "このアイデアを削除", mainnote_path(@mainnote),method: :delete,data: { confirm: "本当に削除しますか?" } %></strong></p>
+          <p><strong><%= link_to "この工夫を削除", mainnote_path(@mainnote),method: :delete,data: { confirm: "本当に削除しますか?" } %></strong></p>
         </div>
     <%end%> 
   </div>
@@ -87,12 +86,12 @@
   <%boolen='true'%>
   <% @notecomment.each do |notecomment| %>
     <% if notecomment.user_id == current_user.id%>
-      <%boolen='※あなたは既にこのアイデアへ評価を投稿しています'%>       
+      <%boolen='※あなたは既にこの工夫へ評価を投稿しています'%>       
     <% end %>
   <% end %>
 
   <% if @mainnote.user_id == current_user.id%>
-    <%boolen='※自身のアイデアへ評価できません'%>
+    <%boolen='※自身投稿した工夫へ評価できません'%>
   <%end%>
 
   <%if boolen=='true'%>
