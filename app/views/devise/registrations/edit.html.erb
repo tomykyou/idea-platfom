@@ -14,47 +14,45 @@
 <div class="main-margin">
   <h1>ユーザー情報更新</h1>
   <div class="main_border">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <div class="field">
-    <p><strong><%= f.label :ユーザー名 %></strong></p>
-    <%= f.text_field :username, class: "form-control" %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="field">
+        <p><strong><%= f.label :ユーザー名 %></strong></p>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
+      <% resource.errors.full_messages_for(:username).each do |message| %>
+        <%= message %>
+      <% end %>
+
+      <!--ユーザーのアイコンフォルダの有無で判定させる。現在のアバター、アバターの再設定、アバター削除の枠を作成-->
+      <%if @current_user.image.present?%>
+        <p><strong>現在のアイコン</strong></p>
+        <img src=<%= @current_user.image %> width="100" height="60">
+        <!--<h3>アイコンを削除　※チェックを入れるとアイコンは消えます</h3>
+        <%= f.check_box :remove_image %><br/>-->
+        <p><strong>アイコンを変更　※jpg,jpeg,pngのみ対応しています。</strong></p>
+        <div class="field">
+          <%= f.file_field :image %>
+        </div>
+      <%else%>
+        <p><strong>アイコンを設定</strong></p>
+        <div class="field">
+          <%= f.file_field :image %>
+        </div>
+      <%end%>
+
+      <p><strong>一言</strong></p>
+      <div class="field">
+          <%= f.text_field :award %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "更新" %>
+      </div>
+    <% end %>
+    <%= button_to "退会する", registration_path(resource_name), data: { confirm: "退会したら全ての記録が削除されます。本当によろしいですか?" }, method: :delete %>
   </div>
-  <% resource.errors.full_messages_for(:username).each do |message| %>
-    <%= message %>
-  <% end %>
-
-  <!--ユーザーのアイコンフォルダの有無で判定させる。現在のアバター、アバターの再設定、アバター削除の枠を作成-->
-  <%if @current_user.image.present?%>
-    <p><strong>現在のアイコン</strong></p>
-    <img src=<%= @current_user.image %> width="100" height="60">
-    <!--<h3>アイコンを削除　※チェックを入れるとアイコンは消えます</h3>
-    <%= f.check_box :remove_image %><br/>-->
-    <p><strong>アイコンを変更　※jpg,jpeg,pngのみ対応しています。</strong></p>
-    <div class="field">
-      <%= f.file_field :image %>
-    </div>
-  <%else%>
-    <p><strong>アイコンを設定</strong></p>
-    <div class="field">
-      <%= f.file_field :image %>
-    </div>
-  <%end%>
-
- <p><strong>一言</strong></p>
-  <div class="field">
-      <%= f.text_field :award %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-<%= button_to "退会する", registration_path(resource_name), data: { confirm: "退会したら全ての記録が削除されます。本当によろしいですか?" }, method: :delete %>
-
-  </div>
-
 </div>
