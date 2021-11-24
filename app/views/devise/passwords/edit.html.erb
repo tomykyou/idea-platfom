@@ -19,20 +19,39 @@
       <div class="field">
         <p><strong><%= f.label :password, "新しいパスワードを入力してください" %></strong></p>
         <p>(<%= @minimum_password_length%>文字以上で入力してください)</p>  
-        <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+        
+        <%boolen_password=""%>
+
+        <% resource.errors.full_messages_for(:password).each do |message| %>
+          <%boolen_password="false"%>
+        <% end %>
+        <%if boolen_password=="false"%>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"error_form"%>
+          <% resource.errors.full_messages_for(:password).each do |message| %>
+            <p class="error_massege_text"><strong><%= message %></strong></p>
+          <% end %>
+        <%else%>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+        <%end%>  
       </div>
-      <% resource.errors.full_messages_for(:password).each do |message| %>
-          <%= message %>
-      <% end %>
-      
+
       <div class="field">
         <p><strong><%= f.label :password_confirmation, "パスワード再確認用" %></strong></p>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <% boolen_password_confirmation=""%>
+        <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <% boolen_password_confirmation="false"%>
+        <% end %>
+
+        <%if boolen_password_confirmation=="false"%>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"error_form" %>
+          <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+            <p class="error_massege_text"><strong><%= message %></strong></p>
+          <% end %>
+        <%else%>  
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%end%>    
       </div>
-      
-      <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
-          <%= message %>
-      <% end %>
+
       <div class="actions">
         <%= f.submit "パスワードを変更" %>
       </div>

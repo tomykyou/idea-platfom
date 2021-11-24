@@ -14,57 +14,93 @@
 <div class="main-margin">
   <h1>新規登録</h1>
 <div class="main_border">
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
-        <p><strong><%= f.label :メールアドレス %><br/></strong></p>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
-      <div class="error_messages"> 
+        <p><strong><%= f.label :メールアドレス %><br/></strong></p> 
+        <%boolen_email = ""%>
         <% resource.errors.full_messages_for(:email).each do |message| %>
-          <%= message %>
+          <%boolen_email = "false"%>
         <% end %>
+        <%if boolen_email == "false"%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "error_form" %>
+          <% resource.errors.full_messages_for(:email).each do |message| %>
+            <p class="error_massege_text"><strong><%= message %></strong></p>
+          <% end %>
+        <%else%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <% end %>  
       </div>
       
-      <div class="field">
-        <p><strong><%= f.label :ユーザー名 %><br/></strong></p>
-        <%= f.text_field :username, class: "form-control" %>
-      </div>
-      <% resource.errors.full_messages_for(:username).each do |message| %>
-        <%= message %>
-      <% end %>
 
       <div class="field">
-        <p><strong><%= f.label :アイコン%>　※jpg,jpeg,pngのみ対応しています。<br/></strong></p>
+        <p><strong><%= f.label :ユーザー名 %></strong></p>
+        <%boolen_username = ""%>
+        <% resource.errors.full_messages_for(:username).each do |message| %>
+          <%boolen_username = "false"%>
+        <% end %>
+        <%if boolen_username == "false"%>
+          <%= f.text_field :username, class: "form-control", class: "error_form"%>
+          <% resource.errors.full_messages_for(:username).each do |message| %>
+            <p class="error_massege_text"><strong><%= message %></strong></p>
+          <% end %>
+        <%else%>
+          <%= f.text_field :username, class: "form-control" %>
+        <%end%>
+    </div>
+      
+
+      <div class="field">
+        <p><strong><%= f.label :アイコン%></strong>(jpg,jpeg,pngのみ対応しています)</p>
         <%= f.file_field :image ,accept: 'image/jpg,image/jpeg,image/png' %>
       </div>
       
+
       <div class="field">
-        <p><strong><%= f.label :一言 %><br/></strong></p>
+        <p><strong><%= f.label :一言 %></strong></p>
         <%= f.text_field :award %>
       </div>
 
-      <div class="field">
-        <p><strong><%= f.label :パスワード %></strong></p>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-      </div>
-      <% resource.errors.full_messages_for(:password).each do |message| %>
-          <%= message %>
-      <% end %>
 
       <div class="field">
-        <p><strong><%= f.label :パスワード再入力 %><br/></strong></p>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        <p><strong><%= f.label :パスワード %></strong>(<%= @minimum_password_length %>文字以上)</p>
+          <%boolen_password = ""%>
+        <% resource.errors.full_messages_for(:password).each do |message| %>
+          <%boolen_password = "false"%>
+        <% end %>
+
+        <%if boolen_password == "false"%>
+          <%= f.password_field :password, autocomplete: "off", class: "error_form" %>
+          <% resource.errors.full_messages_for(:password).each do |message| %>
+            <p class="error_massege_text"><strong><%= message %></strong></p>
+          <% end %>
+        <%else%>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>  
+        <%end%>  
       </div>
-      <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
-          <%= message %>
-      <% end %>
+
+
+      <div class="field">
+        <p><strong><%= f.label :"パスワード(確認用)" %></strong></p>
+        <%boolen_password_confirmation=""%>
+        <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <%boolen_password_confirmation="false"%>
+        <% end %>   
+
+        <%if boolen_password_confirmation == "false"%>      
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "error_form" %>
+          <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+            <p class="error_massege_text"><strong><%= message %></strong></p>
+          <% end %>
+        <%else%>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>  
+        <% end %>
+      </div>
+      
       <div class="actions">
         <%= f.submit "登録", class: "btn btn-primary btn-block" %>
       </div>
+
     <% end %>
   </div>
 </div>

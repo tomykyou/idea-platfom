@@ -20,24 +20,25 @@
   <div>
     <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
   </div>
-
-  <% @mainnote.errors.full_messages_for(:text).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
-  
-  <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
   
   <div>
     <p><strong><%= form.label :title %></strong></p><br>
     <%= form.text_area :title %>
   </div>
   
+  <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+    <%= message %>
+  <% end %>
+
   <div>
     <p><strong><%= form.label :text %></strong></p><br>
     <%= form.text_area :text %>
   </div>
+
+  <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+    <%= message %>
+  <% end %>
+
   <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。<strong><p>
   <div>
       <p><strong><%= form.label :画像1 %></strong></p>

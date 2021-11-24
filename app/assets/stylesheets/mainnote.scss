@@ -46,6 +46,15 @@ nav li:hover{
     border-top:1px solid black;
     padding: 30px 0px 0px 0px;
 }
+/*エラーメッセージ*/
+.error_massege_text{
+    color: #DD0000;
+}
+
+.error_form{
+    background-color:#FFDBC9;
+    border: 1px solid #DD0000;
+}
 /*ログインページ*/
 
 
@@ -87,7 +96,7 @@ nav li:hover{
 .top_user_content{
     float: left;
 }
-/*何回も使いそう終わり*/
+/*何回も使いそう*/
 
 
 /*showページのcss*/
@@ -142,6 +151,7 @@ nav li:hover{
     overflow-wrap: break-word;
 }
 
+
 /*ユーザー一覧のcss*/
 .userlist_user_area{
     width:200px;
@@ -153,6 +163,7 @@ nav li:hover{
 .userlist_user_content{
     text-align: center;
 }
+
 
 /*Userpgのcss*/
 .userpg_contents{
@@ -202,10 +213,12 @@ nav li:hover{
     width: 200px;
 }
 
+
 /*アバウトページのcss*/
 .text_center{
     text-align: center;
 }
+
 
 /*コメントのcss*/
 .comment_pointbar p{
