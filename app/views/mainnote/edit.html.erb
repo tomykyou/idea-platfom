@@ -16,61 +16,66 @@
   <h2>工夫内容更新</h2>
 </div>
 <div class="main_border">
-<%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
-  <div>
-    <p><strong><%= form.label :"タイトル" %></strong></p><br>
-    <%= form.text_area :title %>
-  </div>
-  <% @mainnote.errors.full_messages_for(:text).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
+  <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
+    <%boolen_title=""%>
+    <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+      <%boolen_title="false"%>
+    <% end %>
+    <p><strong><%= form.label :"タイトル" %></strong></p>
+    <%if boolen_title == "false"%>
+      <%= form.text_area :title, class: "error_form" %>
+      <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+        <p class="error_massege_text"><strong><%= message %></strong></p>
+      <% end %>
+    <%else%>
+      <%= form.text_area :title %>
+    <%end%>    
 
-  <div>
-    <%= form.label :"説明文" %><br>
-    <%= form.text_area :text %>
-  </div>
-  <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
+    <%boolen_text=""%>
+    <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+      <%boolen_text="false"%>
+    <% end %>
+    <p><strong><%= form.label :"詳細" %></strong></p>
+    <%if boolen_text == "false"%>
+      <%= form.text_area :text, class: "error_form" %>
+      <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+        <p class="error_massege_text"><strong><%= message %></strong></p>
+      <% end %>
+    <%else%>
+      <%= form.text_area :text %>
+    <%end%>
 
-  <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。</strong></p>
-  <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
-  <%if @mainnote.image1.present?%>
-    <p><strong><%= form.label :画像1 %></strong></p><br/>
-    <img src=<%= @mainnote.image1 %> width="200" height="120"><br/>
-    <%= form.submit value: "添付画像を消す",name: "delete_image1",class: "btn_send" %><br/>
-  <%else%>
-    <div>
+    <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。</strong></p>
+    <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
+    <%if @mainnote.image1.present?%>
       <p><strong><%= form.label :画像1 %></strong></p><br/>
-      <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png' %><br/>
-    </div>
-  <%end%>
- <!--画像２があれば表示して削除ボタンを表示。空ならフォームを表示-->
-   <%if @mainnote.image2.present?%>
-    <p><strong><%= form.label :画像2 %></strong></p><br/>
-    <img src=<%= @mainnote.image2 %> width="200" height="120"><br/>
-    <%= form.submit value: "添付画像を消す",name: "delete_image2",class: "btn_send" %><br/>
-  <%else%>
-    <div>
+      <img src=<%= @mainnote.image1 %> width="200" height="120"><br/>
+      <%= form.submit value: "添付画像を消す",name: "delete_image1",class: "btn_send" %><br/>
+    <%else%>
+      
+    <p><strong><%= form.label :画像1 %></strong></p><br/>
+    <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png' %><br/>
+      
+    <%end%>
+    <!--画像２があれば表示して削除ボタンを表示。空ならフォームを表示-->
+    <%if @mainnote.image2.present?%>
+      <p><strong><%= form.label :画像2 %></strong></p><br/>
+      <img src=<%= @mainnote.image2 %> width="200" height="120"><br/>
+      <%= form.submit value: "添付画像を消す",name: "delete_image2",class: "btn_send" %><br/>
+    <%else%>
       <p><strong><%= form.label :画像2 %></strong></p><br/>
       <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%><br/>
-    </div>
-  <%end%>
- <!--画像３があれば表示して削除ボタンを表示。空ならフォームを表示-->
-  <%if @mainnote.image3.present?%>
-    <p><strong><%= form.label :画像3 %></strong></p><br/>
-    <img src=<%= @mainnote.image3 %> width="200" height="120"><br/>
-    <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %><br/>
-  <%else%>
-    <div>
+    <%end%>
+  <!--画像３があれば表示して削除ボタンを表示。空ならフォームを表示-->
+    <%if @mainnote.image3.present?%>
+      <p><strong><%= form.label :画像3 %></strong></p><br/>
+      <img src=<%= @mainnote.image3 %> width="200" height="120"><br/>
+      <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %><br/>
+    <%else%>
       <p><strong><%= form.label :画像3 ,accept: 'image/jpg,image/jpeg,image/png'%></strong></p><br/>
       <%= form.file_field :image3 %><br/>
-    </div>
-  <%end%>
-
-  <div>
+    <%end%>
     <%= form.submit :"投稿を更新する" %>
-  </div>
-<% end %>
+  <% end %>
 </div>
 </div>

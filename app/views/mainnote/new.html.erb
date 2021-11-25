@@ -21,43 +21,41 @@
     <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
   </div>
   
-  <div>
-    <p><strong><%= form.label :title %></strong></p><br>
-    <%= form.text_area :title %>
-  </div>
-  
-  <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-    <%= message %>
-  <% end %>
+    <%boolen_title=""%>
+    <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+      <%boolen_title="false"%>
+    <% end %>
+    <p><strong><%= form.label :"タイトル" %></strong></p>
+    <%if boolen_title == "false"%>
+      <%= form.text_area :title, class: "error_form" %>
+      <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+        <p class="error_massege_text"><strong><%= message %></strong></p>
+      <% end %>
+    <%else%>
+      <%= form.text_area :title %>
+    <%end%>  
 
-  <div>
-    <p><strong><%= form.label :text %></strong></p><br>
-    <%= form.text_area :text %>
-  </div>
-
-  <% @mainnote.errors.full_messages_for(:text).each do |message| %>
-    <%= message %>
-  <% end %>
-
-  <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。<strong><p>
-  <div>
-      <p><strong><%= form.label :画像1 %></strong></p>
-      <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png'%>
-  </div>
-
-  <div>
-      <p><strong><%= form.label :画像2 %></strong></p>
-      <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
-  </div>
-
-  <div>
-      <p><strong><%= form.label :画像3 %></strong></p>
-      <%= form.file_field :image3 ,accept: 'image/jpg,image/jpeg,image/png'%>
-  </div>
-
-  <div>
+    <%boolen_text=""%>
+    <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+      <%boolen_text="false"%>
+    <% end %>
+    <p><strong><%= form.label :"詳細" %></strong></p>
+    <%if boolen_text == "false"%>
+      <%= form.text_area :text, class: "error_form" %>
+      <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+        <p class="error_massege_text"><strong><%= message %></strong></p>
+      <% end %>
+    <%else%>
+      <%= form.text_area :text %>
+    <%end%> 
+    <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。<strong><p>
+    <p><strong><%= form.label :画像1 %></strong></p>
+    <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png'%>
+    <p><strong><%= form.label :画像2 %></strong></p>
+    <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
+    <p><strong><%= form.label :画像3 %></strong></p>
+    <%= form.file_field :image3 ,accept: 'image/jpg,image/jpeg,image/png'%>
     <%= form.submit %>
+  <% end %>
   </div>
-<% end %>
-</div>
 </div>
