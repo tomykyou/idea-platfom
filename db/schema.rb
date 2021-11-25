@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_233641) do
+ActiveRecord::Schema.define(version: 2021_11_25_141051) do
 
   create_table "mainnotes", force: :cascade do |t|
     t.string "text"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_10_12_233641) do
     t.string "image1"
     t.string "image2"
     t.string "image3"
+    t.string "target"
+    t.string "category"
     t.index ["user_id"], name: "index_mainnotes_on_user_id"
   end
 
