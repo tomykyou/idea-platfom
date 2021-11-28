@@ -20,12 +20,12 @@
     <div class="field">
       <%= render "devise/shared/error_messages", resource: resource %>
       <p><strong><%= f.label :email %><br/></strong></p>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_size" %>
     </div>
 
     <div class="field">
       <p><strong><%= f.label :password %><br/></strong></p>
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.password_field :password, autocomplete: "current-password", class:"form_size" %>
     </div>
     <!--<% if devise_mapping.rememberable? %>
           <div class="field">
@@ -33,7 +33,7 @@
             <%= f.label :remember_me %>
           </div>
     <% end %>-->
-    <%= alert %>
+    <p class="error_massege_text"><strong><%= alert %></p>
     <div class="actions">
       <%= f.submit "ログイン" %>
     </div>

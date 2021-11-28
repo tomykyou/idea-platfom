@@ -26,12 +26,12 @@
           <%boolen_password="false"%>
         <% end %>
         <%if boolen_password=="false"%>
-          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"error_form"%>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"error_form" %>
           <% resource.errors.full_messages_for(:password).each do |message| %>
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form_size" %>
         <%end%>  
       </div>
 
@@ -48,7 +48,7 @@
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>  
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form_size" %>
         <%end%>    
       </div>
 

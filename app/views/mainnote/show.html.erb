@@ -67,6 +67,8 @@
       <p><strong>詳細</strong></p>
       <p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
     </div>
+    <p><strong>カテゴリー:</strong><%=@mainnote.category%></p>
+    <p><strong>ターゲット:</strong><%=@mainnote.target%></p>
     <div class="show_currentuser_contents">
     <% if @mainnote.user_id == current_user.id %>
         <div class="show_currentuser_content">

@@ -21,12 +21,12 @@
           <%boolen_username = "false"%>
         <% end %>
         <%if boolen_username == "false"%>
-          <%= f.text_field :username, class: "form-control", class: "error_form"%>
+          <%= f.text_field :username, class: "form-control", class: "error_form" %>
           <% resource.errors.full_messages_for(:username).each do |message| %>
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.text_field :username, class: "form-control" %>
+          <%= f.text_field :username, class: "form_size" %>
         <%end%>
       </div>
       <!--ユーザーのアイコンフォルダの有無で判定させる。現在のアバター、アバターの再設定、アバター削除の枠を作成-->
@@ -37,7 +37,7 @@
         <%= f.check_box :remove_image %><br/>-->
         <p><strong>アイコンを変更　※jpg,jpeg,pngのみ対応しています。</strong></p>
         <div class="field">
-          <%= f.file_field :image %>
+          <%= f.file_field :image%>
         </div>
       <%else%>
         <p><strong>アイコンを設定</strong></p>
@@ -48,7 +48,7 @@
 
       <p><strong>一言</strong></p>
       <div class="field">
-          <%= f.text_field :award %>
+          <%= f.text_field :award, class:"form_size" %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

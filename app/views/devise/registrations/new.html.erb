@@ -28,7 +28,7 @@
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_size" %>
         <% end %>  
       </div>
       
@@ -40,12 +40,12 @@
           <%boolen_username = "false"%>
         <% end %>
         <%if boolen_username == "false"%>
-          <%= f.text_field :username, class: "form-control", class: "error_form"%>
+          <%= f.text_field :username, class: "form-control", class: "error_form" %>
           <% resource.errors.full_messages_for(:username).each do |message| %>
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.text_field :username, class: "form-control" %>
+          <%= f.text_field :username, class: "form_size" %>
         <%end%>
     </div>
       
@@ -58,7 +58,7 @@
 
       <div class="field">
         <p><strong><%= f.label :一言 %></strong></p>
-        <%= f.text_field :award %>
+        <%= f.text_field :award, class: "form_size" %>
       </div>
 
 
@@ -75,7 +75,7 @@
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>  
+          <%= f.password_field :password, autocomplete: "off", class: "form_size" %>  
         <%end%>  
       </div>
 
@@ -93,7 +93,7 @@
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>  
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form_size" %>  
         <% end %>
       </div>
       

@@ -9,6 +9,8 @@ ja:
         image1: 画像1
         image2: 画像2
         image3: 画像3
+        target: ターゲット
+        category: カテゴリー
     messages:
       record_invalid: 'バリデーションに失敗しました: %{errors}'
       restrict_dependent_destroy:

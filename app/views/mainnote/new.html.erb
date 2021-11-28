@@ -12,64 +12,71 @@
   </ul>
 </nav>
 <div class="main-margin">
-<div class="title">
-  <h2>新規工夫投稿</h2>
-</div>
-<div class="main_border">
-<%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
-  <div>
-    <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
+  <div class="title">
+    <h2>新規工夫投稿</h2>
   </div>
-  
-    <%boolen_title=""%>
-    <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-      <%boolen_title="false"%>
-    <% end %>
-    <p><strong><%= form.label :"タイトル" %></strong></p>
-    <%if boolen_title == "false"%>
-      <%= form.text_area :title, class: "error_form" %>
+  <div class="main_border">
+    <%= form_with model: @mainnote,:url => {:action => :create}  do |form| %>
+      <div>
+        <%= form.hidden_field :user_id, value: current_user.id, :readonly => true%>
+      </div>
+      
+      <p><strong><%= form.label :"タイトル" %></strong></p>
+      <%boolen_title=""%>
       <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-        <p class="error_massege_text"><strong><%= message %></strong></p>
+        <%boolen_title="false"%>
       <% end %>
-    <%else%>
-      <%= form.text_area :title %>
-    <%end%>  
+      <%if boolen_title == "false"%>
+        <%= form.text_area :title, class: "error_form" %>
+        <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+          <p class="error_massege_text"><strong><%= message %></strong></p>
+        <% end %>
+      <%else%>
+          <%= form.text_area :title, class:"form_size" %>
+      <%end%>  
 
-    <%boolen_text=""%>
-    <% @mainnote.errors.full_messages_for(:text).each do |message| %>
-      <%boolen_text="false"%>
-    <% end %>
-    <p><strong><%= form.label :"詳細" %></strong></p>
-    <%if boolen_text == "false"%>
-      <%= form.text_area :text, class: "error_form" %>
+      <p><strong><%= form.label :"詳細" %></strong></p>
+      <%boolen_text=""%>
       <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+        <%boolen_text="false"%>
+      <% end %>
+      <%if boolen_text == "false"%>
+        <%= form.text_area :text, class:"error_form" %>
+        <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+          <p class="error_massege_text"><strong><%= message %></strong></p>
+        <% end %>
+      <%else%>
+        <%= form.text_area :text, class:"form_size" %>
+      <%end%> 
+
+      <p><strong><%= form.label :"想定した利用者" %></strong></p>
+      <%boolen_text=""%>
+      <% @mainnote.errors.full_messages_for(:target).each do |message| %>
+         <%boolen_text="false"%>
+      <% end %>
+      <%if boolen_text == "false"%>
+        <%= form.text_area :target, class:"error_form"  %>
+        <% @mainnote.errors.full_messages_for(:target).each do |message| %>
+          <p class="error_massege_text"><strong><%= message %></strong></p>
+        <% end %>
+      <%else%>      
+        <%= form.text_area :target, class:"form_size" %>
+      <% end %>      
+
+      <p><strong><%= form.label :"カテゴリー" %></strong></p>
+      <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"]], include_blank: "カテゴリーを選択して下さい"  %>
+      <% @mainnote.errors.full_messages_for(:category).each do |message| %>
         <p class="error_massege_text"><strong><%= message %></strong></p>
       <% end %>
-    <%else%>
-      <%= form.text_area :text %>
-    <%end%> 
 
-    <p><strong><%= form.label :"想定した利用者" %></strong></p>
-    <%= form.text_area :target %>
-    <% @mainnote.errors.full_messages_for(:target).each do |message| %>
-      <p class="error_massege_text"><strong><%= message %></strong></p>
+      <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。<strong><p>
+      <p><strong><%= form.label :画像1 %></strong></p>
+      <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png'%>
+      <p><strong><%= form.label :画像2 %></strong></p>
+      <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
+      <p><strong><%= form.label :画像3 %></strong></p>
+      <%= form.file_field :image3 ,accept: 'image/jpg,image/jpeg,image/png'%><br>
+      <%= form.submit %>
     <% end %>
-
-    <p><strong><%= form.label :"カテゴリー" %></strong></p>
-    <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"]], include_blank: "カテゴリーを選択して下さい"  %>
-    <% @mainnote.errors.full_messages_for(:category).each do |message| %>
-      <p class="error_massege_text"><strong><%= message %></strong></p>
-    <% end %>
-
-
-    <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。<strong><p>
-    <p><strong><%= form.label :画像1 %></strong></p>
-    <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png'%>
-    <p><strong><%= form.label :画像2 %></strong></p>
-    <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
-    <p><strong><%= form.label :画像3 %></strong></p>
-    <%= form.file_field :image3 ,accept: 'image/jpg,image/jpeg,image/png'%>
-    <%= form.submit %>
-  <% end %>
   </div>
 </div>
