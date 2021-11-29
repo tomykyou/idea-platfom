@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   resources :mainnote do
     resources :notecomments
+    resources :likes, only: [:create, :destroy]
   end
 end

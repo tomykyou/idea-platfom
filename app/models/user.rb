@@ -3,8 +3,13 @@ class User < ApplicationRecord
   validates :username,length: {maximum:10}, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         has_many :mainnotes, dependent: :destroy
-         has_many :notecomments, dependent: :destroy
+  has_many :mainnotes, dependent: :destroy
+  has_many :notecomments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_mainnote, through: :likes, source: :mainnote
+  def already_liked?(mainnote)
+    self.likes.exists?(mainnote_id: mainnote.id)
+  end
          
   def update_without_current_password(params, *options)
    params.delete(:current_password)

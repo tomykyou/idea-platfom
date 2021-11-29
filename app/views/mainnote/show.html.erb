@@ -38,6 +38,12 @@
 
   <div class="show_top_contents">
     <div class="show_top_content">
+    <h3>いいね件数: <%= @mainnote.likes.count %></h3>
+    <% if current_user.already_liked?(@mainnote) %>
+      <%= button_to 'いいねを取り消す', mainnote_like_path(@mainnote), method: :delete %>
+    <% else %>
+      <%= button_to 'いいね', mainnote_likes_path(@mainnote) %>
+      <% end %>
       <h3>獲得ポイント</h3>
       <div class="show_content_pointbar">
         <p><strong>将来性 : </strong><%=future_point%>ポイント</p>
