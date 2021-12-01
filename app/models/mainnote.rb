@@ -2,6 +2,14 @@ class Mainnote < ApplicationRecord
   mount_uploader :image1, ImageUploader
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader
+  belongs_to :user
+  has_many :notecomments, dependent: :destroy
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
+
+  has_many :uses
+  has_many :used_users, through: :uses, source: :user
+  
   validate :title_valid
   def title_valid
     if title.blank?
@@ -34,9 +42,4 @@ class Mainnote < ApplicationRecord
       errors.add(:target, :blank) 
     end  
   end
-
-  belongs_to :user
-  has_many :notecomments, dependent: :destroy
-  has_many :likes
-  has_many :liked_users, through: :likes, source: :user
 end

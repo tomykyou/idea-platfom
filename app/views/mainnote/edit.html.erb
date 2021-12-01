@@ -60,7 +60,7 @@
       <% end %> 
 
       <p><strong><%= form.label :"カテゴリー" %></strong></p>
-      <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"]], include_blank: "カテゴリーを選択して下さい"  %>
+      <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], include_blank: "カテゴリーを選択して下さい"  %>
       <% @mainnote.errors.full_messages_for(:category).each do |message| %>
         <p class="error_massege_text"><strong><%= message %></strong></p>
       <% end %>

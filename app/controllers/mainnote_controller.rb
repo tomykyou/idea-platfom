@@ -9,6 +9,9 @@ class MainnoteController < ApplicationController
     @mainnote = Mainnote.find(params[:id])
     @user_mainnote= User.where(id: @mainnote.user_id)
     @notecomment = Notecomment.where(mainnote_id: @mainnote.id)
+    @like = Like.new
+    @use = Use.new
+    
   end
 
   def new

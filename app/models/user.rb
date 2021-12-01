@@ -7,10 +7,15 @@ class User < ApplicationRecord
   has_many :notecomments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_mainnote, through: :likes, source: :mainnote
+  has_many :uses, dependent: :destroy
+  has_many :used_mainnote, through: :uses, source: :mainnote
   def already_liked?(mainnote)
     self.likes.exists?(mainnote_id: mainnote.id)
   end
-         
+  
+  def already_used?(mainnote)
+    self.uses.exists?(mainnote_id: mainnote.id)
+  end
   def update_without_current_password(params, *options)
    params.delete(:current_password)
       
