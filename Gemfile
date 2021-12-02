@@ -26,6 +26,7 @@ gem 'rails_admin', '~> 2.0.0.beta'
 gem 'carrierwave'
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'kaminari'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

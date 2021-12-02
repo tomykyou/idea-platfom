@@ -287,6 +287,7 @@ DEPENDENCIES
   devise
   devise-i18n
   jbuilder (~> 2.7)
+  kaminari
   letter_opener
   listen (~> 3.3)
   puma (~> 5.0)

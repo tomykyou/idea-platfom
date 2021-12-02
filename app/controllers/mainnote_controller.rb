@@ -2,7 +2,7 @@ class MainnoteController < ApplicationController
   before_action :authenticate_user!, except: [:top,:about]
 
   def top
-    @mainnote = Mainnote.all
+    @mainnote = Mainnote.all.page(params[:page]).per(20)
   end
 
   def show
@@ -11,7 +11,6 @@ class MainnoteController < ApplicationController
     @notecomment = Notecomment.where(mainnote_id: @mainnote.id)
     @like = Like.new
     @use = Use.new
-    
   end
 
   def new
