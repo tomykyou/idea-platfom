@@ -69,6 +69,9 @@
         <p class="error_massege_text"><strong><%= message %></strong></p>
       <% end %>
 
+      <p><strong><%= form.label :"必要なもの" %></strong></p>
+      <%=form.text_area :thingstoprepare, class:"form_size"%>
+
       <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。<strong><p>
       <p><strong><%= form.label :画像1 %></strong></p>
       <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png'%>

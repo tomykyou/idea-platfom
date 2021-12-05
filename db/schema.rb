@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_170341) do
+ActiveRecord::Schema.define(version: 2021_12_05_150126) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "mainnote_id", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_170341) do
     t.string "image3"
     t.string "target"
     t.string "category"
+    t.string "thingstoprepare"
     t.index ["user_id"], name: "index_mainnotes_on_user_id"
   end
 

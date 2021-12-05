@@ -93,7 +93,7 @@ class MainnoteController < ApplicationController
   
   private
     def mainnote_params
-      params.require(:mainnote).permit(:user_id, :text, :title, :image1, :image2, :image3, :category, :target)
+      params.require(:mainnote).permit(:user_id, :text, :title, :image1, :image2, :image3, :category, :target, :thingstoprepare)
     end
 
 
