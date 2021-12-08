@@ -50,6 +50,35 @@ nav li:hover{
     width: 300px;
     height: 20px;
 }
+/*ボタンのデザイン*/
+.like_before{
+    color: gray;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.like_after{
+    color: lightskyblue;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.use_before{
+    color: gray;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+}
+.use_after{
+    color: lightskyblue;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+
 /*エラーメッセージ*/
 .error_massege_text{
     color: #DD0000;
@@ -61,6 +90,11 @@ nav li:hover{
     width: 300px;
     height: 20px;
 }
+
+.error_form,option{
+    background-color:#FFDBC9;
+    border: 1px solid #DD0000;
+}   
 /*ログインページ*/
 
 

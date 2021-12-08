@@ -68,15 +68,12 @@
           <%boolen_occupation = "false"%>
         <% end %>
         <%if boolen_occupation == "false"%>
-          <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], include_blank: "職業を選択して下さい"%>
+          <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], include_blank: "職業を選択して下さい",class: 'error_form' %>
           <% resource.errors.full_messages_for(:occupation).each do |message| %>
             <p class="error_massege_text"><strong><%= message %></strong></p>
           <% end %>
         <%else%>
-          <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], include_blank: "職業を選択して下さい"%>
-          <% resource.errors.full_messages_for(:occupation).each do |message| %>
-            <p class="error_massege_text"><strong><%= message %></strong></p>
-          <% end %>
+          <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], include_blank: "職業を選択して下さい" %>
         <% end %>   
       </div>
 

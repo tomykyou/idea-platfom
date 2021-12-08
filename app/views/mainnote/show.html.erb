@@ -25,31 +25,29 @@
     <%realization_point+=notecomment.realization_point%>
   <% end %>
 
-    <div class="show_user_contents">
-      <% @user_mainnote.each do |user| %>
+  <div class="show_user_contents">
+    <% @user_mainnote.each do |user| %>
       <div class="show_user_content">
         <img src=<%= user.image %> class="user_icon">
       </div> 
       <div class="show_user_content">  
         <p><strong><%= user.username %></strong></p>
       </div>  
-      <% end %>
-    </div>  
+    <% end %>
+  </div>  
   <p><%=l @mainnote.created_at, format: :long%></p>
   <div class="show_top_contents">
     <div class="show_top_content">
-      <p><strong>”<%= @mainnote.likes.count %>人”いいね!をしています。</strong></p>
       <% if current_user.already_liked?(@mainnote) %>
-        <%= button_to 'いいね！', mainnote_like_path(@mainnote), method: :delete %>
+        <%= button_to "いいね！" + "#{@mainnote.likes.count}" , mainnote_like_path(@mainnote), method: :delete ,class:"like_after" %>
       <% else %>
-        <%= button_to 'いいね！', mainnote_likes_path(@mainnote) %>
+        <%= button_to "いいね！" + "#{@mainnote.likes.count}", mainnote_likes_path(@mainnote),class:"like_before" %>
       <% end %>
       
-      <p><strong>”<%= @mainnote.uses.count %>人”いいね!をしています。</strong></p>
       <% if current_user.already_used?(@mainnote) %>
-        <%= button_to '使います！', mainnote_use_path(@mainnote), method: :delete %>
+        <%= button_to "使います！" + "#{@mainnote.uses.count}", mainnote_use_path(@mainnote), method: :delete,class:"use_after" %>
       <% else %>
-        <%= button_to '使います！', mainnote_uses_path(@mainnote) %>
+        <%= button_to "使います！" + "#{@mainnote.uses.count}", mainnote_uses_path(@mainnote) ,class:"use_before"%>
       <% end %>
       <h3>獲得ポイント</h3>
       <div class="show_content_pointbar">
