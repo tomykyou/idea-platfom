@@ -45,8 +45,18 @@
       <img src="/assets/Diamond.png" class="userpg_rank">
     <%end%>
 </div>
+
+<%likes_point=0%>
+<%uses_point=0%>
+<% @mainnote.each do |mainnote| %>
+  <%likes_point+=mainnote.likes.count%>
+  <%uses_point+=mainnote.uses.count%>
+<% end %>
+
 <div class="userpg_pointbar">
     <p><strong>獲得ポイント</strong></p>
+    <p><strong>いいね数: </strong><%=likes_point%>ポイント</p>  
+    <p><strong>使います数: </strong><%=uses_point%>ポイント</p>   
     <p><strong>将来性 : </strong><%=future_point%>ポイント</p>
     <p><strong>意外性 : </strong><%=surprisingly_point%>ポイント</p>
     <p><strong>実現性 : </strong><%=realization_point%>ポイント</p>
