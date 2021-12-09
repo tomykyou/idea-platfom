@@ -72,17 +72,17 @@ class MainnoteController < ApplicationController
     end
   end
 
-  def mypage
-    @mainnote = Mainnote.where(user_id: current_user.id)
-    @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
+  def about
+
   end
 
   def usershow
     @user = User.all
   end
 
-  def about
-
+  def mypage
+    @mainnote = Mainnote.where(user_id: current_user.id)
+    @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
   end
 
   def userpg

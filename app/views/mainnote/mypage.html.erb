@@ -63,7 +63,7 @@
       <%end%>
       <p class="userpg_user_name"><strong><%= @current_user.username %></strong></p>
     </div>
-    <p><strong>職業:</strong>学生</p>
+    <p><strong>職業:</strong><%=current_user.occupation%></p>
     <p><strong>一言:</strong></p>
     <p><%= current_user.award%></p>
     <%= link_to ' ユーザー情報編集', edit_user_registration_path %>
