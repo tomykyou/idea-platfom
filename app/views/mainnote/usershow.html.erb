@@ -1,4 +1,4 @@
-<h1>工夫FACTORY</h1>
+<h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to "マイページ", mainnnote_mypage_path %></li>
@@ -18,10 +18,17 @@
       <% @user.each do |user| %>
         <div class="userlist_user_area">
         <% if user.id == current_user.id%>
-          <div class="userlist_user_content">
-            <img src = <%= current_user.image %> class="user_icon">
-            <p><%= link_to current_user.username, mainnnote_mypage_path %></p>
-          </div>
+          <%if current_user.image.blank? %>
+            <div class="userlist_user_content">
+              <img src="/assets/Noimageicon.jpeg" class="user_icon">
+              <p><%= link_to current_user.username, mainnnote_mypage_path %></p>
+            </div>
+          <% else %>
+            <div class="userlist_user_content">
+              <img src = <%= current_user.image %> class="user_icon">
+              <p><%= link_to current_user.username, mainnnote_mypage_path %></p>
+           </div>
+          <%end %>
         <% else %>
           <%if user.image.blank? %>
             <div class="userlist_user_content">

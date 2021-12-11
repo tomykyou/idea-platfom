@@ -1,4 +1,4 @@
-<h1>工夫FACTORY</h1>
+<h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to "マイページ", mainnnote_mypage_path %></li>
@@ -78,34 +78,34 @@
       <%end%>  
     </div>
 
-  <p><strong>投稿した工夫一覧</strong></p>
-      <% @mainnote.each do |mainnote| %>
+    <p><strong>投稿した工夫一覧</strong></p>
+    <% @mainnote.each do |mainnote| %>  
       <div class="top_contents">
-      <div class="top_content_border">
-      <div class="top_user_contents">
-        <% @user_mainnote=User.where(id: mainnote.user_id) %>
-        <% @user_mainnote.each do |user| %>
-          <div class="top_user_content">
-          <%if user.image.blank? %>
-            <img src="/assets/Noimageicon.jpeg" class="top_user_icon">
-          <% else %>
-          <img src=<%= user.image %>  class="top_user_icon">
-          <%end %>
-        </div>
-        <div class="top_user_content">
-          <p><a href="/mainnnote/userpg/<%= user.id %>"><%= user.username %></a><p>
-        </div>
-        <%end%>
-        </div>
+        <div class="top_content_border">
+          <div class="top_user_contents">
+            <% @user_mainnote=User.where(id: mainnote.user_id) %>
+            <% @user_mainnote.each do |user| %>
+              <div class="top_user_content">
+                <%if user.image.blank? %>
+                  <img src="/assets/Noimageicon.jpeg" class="top_user_icon">
+                <% else %>
+                  <img src=<%= user.image %>  class="top_user_icon">
+                <%end %>
+              </div>
+              <div class="top_user_content">
+                <p><a href="/mainnnote/userpg/<%= user.id %>"><%= user.username %></a><p>
+              </div>
+            <%end%>
+          </div>
 
-        <%if mainnote.image1.blank? %>
+          <%if mainnote.image1.blank? %>
             <img src="/assets/Noimage.png" class="top-content_image">
-        <% else %>
+          <% else %>
             <img src=<%= mainnote.image1 %> class="top-content_image">
-        <%end %>
-        <p><strong><%= link_to mainnote.title, mainnote %></strong></p>
-    </div>
-    </div>
-      <% end %>
-  </div>
+          <%end %>
+          <p><strong><%= link_to mainnote.title, mainnote %></strong></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <div>

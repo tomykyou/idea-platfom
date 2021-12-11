@@ -1,4 +1,4 @@
-<h1>工夫FACTORY</h1>
+<h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
     <li><%= link_to "マイページ", mainnnote_mypage_path %></li>
@@ -12,7 +12,22 @@
   </ul>
 </nav>
 <div class="main-margin">
-  <h2 class="show_content_title">「<%=@mainnote.title%>」</h2>
+  <div class="show_user_contents">
+    <% @user_mainnote.each do |user| %>
+      <div class="show_user_content">
+        <%if user.image.blank? %>
+          <img src="/assets/Noimageicon.jpeg" class="user_icon">
+        <% else %>
+          <img src=<%= user.image %> class="user_icon">
+        <%end%>
+      </div> 
+      <div class="show_user_content">  
+        <p><strong><%= user.username %></strong></p>
+      </div>  
+    <% end %>
+      <h2 class="show_content_title">「<%=@mainnote.title%>」</h2>
+      <p><%=l @mainnote.created_at, format: :long%></p>
+  </div>  
   <div class="main_border">
   <!--ログインしているユーザーのみに更新削除をできるように設定。コントローラーでもできるが、ボタンを表示させたくないのでviewで条件を設定。-->
   <% future_point=0%>
@@ -25,17 +40,6 @@
     <%realization_point+=notecomment.realization_point%>
   <% end %>
 
-  <div class="show_user_contents">
-    <% @user_mainnote.each do |user| %>
-      <div class="show_user_content">
-        <img src=<%= user.image %> class="user_icon">
-      </div> 
-      <div class="show_user_content">  
-        <p><strong><%= user.username %></strong></p>
-      </div>  
-    <% end %>
-  </div>  
-  <p><%=l @mainnote.created_at, format: :long%></p>
   <div class="show_top_contents">
     <div class="show_top_content">
       <% if current_user.already_liked?(@mainnote) %>
@@ -60,26 +64,29 @@
     <%if @mainnote.image1.blank? %>
       <img src="/assets/Noimage.png" class="show-content_image">
     <% else %>
-      <img src=<%= @mainnote.image1 %> class="show-content_image">
+
+    <a href=<%= @mainnote.image1 %> target="_blank"><img src=<%= @mainnote.image1 %> class="show-content_image"></a>
     <%end %>
     
     <%if @mainnote.image2.blank? %>
       <img src="/assets/Noimage.png" class="show-content_image">
     <% else %>
-      <img src=<%= @mainnote.image2 %> class="show-content_image">
+      <a href=<%= @mainnote.image2 %> target="_blank"><img src=<%= @mainnote.image2 %> class="show-content_image"></a>
     <%end %>
     
     <%if @mainnote.image3.blank?%>
       <img src="/assets/Noimage.png" class="show-content_image">
     <% else %>
-      <img src=<%= @mainnote.image3 %> class="show-content_image">
+      <a href=<%= @mainnote.image3 %> target="_blank"><img src=<%= @mainnote.image3 %> class="show-content_image"></a>
     <%end %>
     <div class="show_content_text">
+      <p><strong>カテゴリー</strong></p>
+      <p><%=@mainnote.category%></p>
+      <p><strong>ターゲット</strong></p>
+      <p><%=@mainnote.target%></p>
       <p><strong>詳細</strong></p>
       <p><%=safe_join(@mainnote.text.split("\n"),tag(:br))%></p>
     </div>
-    <p><strong>カテゴリー:</strong><%=@mainnote.category%></p>
-    <p><strong>ターゲット:</strong><%=@mainnote.target%></p>
     <div class="show_currentuser_contents">
     <% if @mainnote.user_id == current_user.id %>
         <div class="show_currentuser_content">
@@ -93,6 +100,7 @@
   </div>
   
   <h3>コメント一覧</h3>
+  <hr>
   <%= render "notecomments/comment" %>
 
   <!--コメントをしているかどうかの判定。rubyにはboolen型がないので文字列で判定をさせる。-->

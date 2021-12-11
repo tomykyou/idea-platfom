@@ -6,8 +6,12 @@
   <div class="comment_border"> 
     <div class="comment_user_area">
       <% @user_comment.each do |user| %>
-        <div class="comment_user_content">  
-          <img src=<%= user.image %> class="user_icon">
+        <div class="comment_user_content">
+          <%if user.image.blank? %>
+            <img src="/assets/Noimageicon.jpeg" class="user_icon">
+          <% else %>
+            <img src=<%= user.image %> class="user_icon">
+          <%end%>
         </div>
         <div class="comment_user_content">  
           <p><strong><%= user.username %>さん</strong></p>
