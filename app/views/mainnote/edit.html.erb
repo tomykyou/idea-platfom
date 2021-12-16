@@ -17,89 +17,117 @@
   </div>
   <div class="main_border">
     <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
-      <%boolen_title=""%>
-      <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-        <%boolen_title="false"%>
-      <% end %>
-      <p><strong><%= form.label :"タイトル" %></strong></p>
-      <%if boolen_title == "false"%>
-        <%= form.text_area :title, class: "error_form" %>
+        
+      <div class="form_area">
+        <p class="label_width"><strong><%= form.label :"タイトル" %></strong></p>
+        <%boolen_title=""%>
         <% @mainnote.errors.full_messages_for(:title).each do |message| %>
-          <p class="error_massege_text"><strong><%= message %></strong></p>
+          <%boolen_title="false"%>
         <% end %>
-      <%else%>
-        <%= form.text_area :title, class:"form_size" %>
-      <%end%>    
+        <div>
+          <%if boolen_title == "false"%>
+            <%= form.text_area :title, class: "error_form" %>
+            <% @mainnote.errors.full_messages_for(:title).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%>
+              <%= form.text_area :title, class:"form_size" %>
+          <%end%>
+        </div>  
+      </div>   
 
-      <%boolen_text=""%>
-      <% @mainnote.errors.full_messages_for(:text).each do |message| %>
-        <%boolen_text="false"%>
-      <% end %>
-      <p><strong><%= form.label :"詳細" %></strong></p>
-      <%if boolen_text == "false"%>
-        <%= form.text_area :text, class: "error_form" %>
+      <div class="form_area">       
+        <p class="label_width"><strong><%= form.label :"詳細" %></strong></p>
+        <%boolen_text=""%>
         <% @mainnote.errors.full_messages_for(:text).each do |message| %>
-          <p class="error_massege_text"><strong><%= message %></strong></p>
+          <%boolen_text="false"%>
         <% end %>
-      <%else%>
-        <%= form.text_area :text, class:"form_size" %>
-      <%end%>
+        <div>
+          <%if boolen_text == "false"%>
+            <%= form.text_area :text, class:"error_form" %>
+            <% @mainnote.errors.full_messages_for(:text).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%>
+            <%= form.text_area :text, class:"form_size" %>
+          <%end%> 
+        </div>  
+      </div>  
 
-      <p><strong><%= form.label :"想定した利用者" %></strong></p>
-      <%boolen_target=""%>
-      <% @mainnote.errors.full_messages_for(:target).each do |message| %>
-         <%boolen_target="false"%>
-      <% end %>
-      <%if boolen_target == "false"%>
-        <%= form.text_area :target, class:"error_form"  %>
+      <div class="form_area">
+        <p class="label_width"><strong><%= form.label :"想定した利用者" %></strong></p>
+        <%boolen_text=""%>
         <% @mainnote.errors.full_messages_for(:target).each do |message| %>
-          <p class="error_massege_text"><strong><%= message %></strong></p>
+          <%boolen_text="false"%>
         <% end %>
-      <%else%>      
-        <%= form.text_area :target, class:"form_size" %>
-      <% end %> 
+        <div>  
+          <%if boolen_text == "false"%>
+            <%= form.text_area :target, class:"error_form" %>
+            <% @mainnote.errors.full_messages_for(:target).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%>      
+            <%= form.text_area :target, class:"form_size" %>
+          <% end %> 
+        </div>  
+      </div>   
 
-      <p><strong><%= form.label :"カテゴリー" %></strong></p>
-      <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], include_blank: "カテゴリーを選択して下さい"  %>
-      <% @mainnote.errors.full_messages_for(:category).each do |message| %>
-        <p class="error_massege_text"><strong><%= message %></strong></p>
-      <% end %>
-      
-      <p><strong><%= form.label :"必要なもの" %></strong></p>
-      <%=form.text_area :thingstoprepare, class:"form_size"%>
+      <div class="form_area">
+        <p class="label_width"><strong><%= form.label :"カテゴリー" %></strong></p>
+        <%boolen_category=""%>
+        <% @mainnote.errors.full_messages_for(:category).each do |message| %>
+          <%boolen_category="false"%>
+        <% end %>
+        <div>
+          <%if boolen_category == "false"%>
+            <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], include_blank: "カテゴリーを選択して下さい"  %>
+            <% @mainnote.errors.full_messages_for(:category).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%> 
+            <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], include_blank: "カテゴリーを選択して下さい"%>
+          <% end %>
+        </div>  
+      </div>
 
+      <div class="form_area">
+        <p class="label_width"><strong><%= form.label :"必要なもの" %></strong></p>
+        <%=form.text_area :thingstoprepare, class:"form_size"%>
+      </div>
       <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。</strong></p>
       
       <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
-      <%if @mainnote.image1.present?%>
-        <p><strong><%= form.label :画像1 %></strong></p>
-        <img src=<%= @mainnote.image1 %> width="200" height="120">
-        <%= form.submit value: "添付画像を消す",name: "delete_image1",class: "btn_send" %>
-      <%else%>
-        <p><strong><%= form.label :画像1 %></strong></p>
-        <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png' %>
-      <%end%>
+      <div class="form_area">  
+        <p class="label_width"><strong><%= form.label :画像1 %></strong></p>
+        <%if @mainnote.image1.present?%>
+          <img src=<%= @mainnote.image1 %> width="200" height="120">
+          <%= form.submit value: "添付画像を消す",name: "delete_image1",class: "btn_send" %>
+        <%else%>
+          <%= form.file_field :image1 ,accept: 'image/jpg,image/jpeg,image/png' %>
+        <%end%>
+      </div>
 
       <!--画像２があれば表示して削除ボタンを表示。空ならフォームを表示-->
-      <%if @mainnote.image2.present?%>
-        <p><strong><%= form.label :画像2 %></strong></p>
-        <img src=<%= @mainnote.image2 %> width="200" height="120">
-        <%= form.submit value: "添付画像を消す",name: "delete_image2",class: "btn_send" %>
-      <%else%>
-        <p><strong><%= form.label :画像2 %></strong></p>
-        <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
-      <%end%>
+      <div class="form_area">
+        <p class="label_width"><strong><%= form.label :画像2 %></strong></p>
+        <%if @mainnote.image2.present?%>
+          <img src=<%= @mainnote.image2 %> width="200" height="120">
+          <%= form.submit value: "添付画像を消す",name: "delete_image2",class: "btn_send" %>
+        <%else%>
+          <%= form.file_field :image2 ,accept: 'image/jpg,image/jpeg,image/png'%>
+        <%end%>
+      </div>
 
       <!--画像３があれば表示して削除ボタンを表示。空ならフォームを表示-->
-      <%if @mainnote.image3.present?%>
-        <p><strong><%= form.label :画像3 %></strong></p>
-        <img src=<%= @mainnote.image3 %> width="200" height="120">
-        <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %>
-      <%else%>
-        <p><strong><%= form.label :画像3 ,accept: 'image/jpg,image/jpeg,image/png'%></strong></p>
-        <%= form.file_field :image3 %>
-      <%end%>
-      <br/>
+      <div class="form_area">
+        <p class="label_width"><strong><%= form.label :画像3 %></strong></p>
+        <%if @mainnote.image3.present?%>
+          <img src=<%= @mainnote.image3 %> width="200" height="120">
+          <%= form.submit value: "添付画像を消す",name: "delete_image3",class: "btn_send" %>
+        <%else%>
+          <%= form.file_field :image3 %>
+        <%end%>
+      </div>
       <%= form.submit :"投稿を更新する" %>
     <% end %>
   </div>

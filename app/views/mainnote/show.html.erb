@@ -107,7 +107,7 @@
   <%boolen='true'%>
   <% @notecomment.each do |notecomment| %>
     <% if notecomment.user_id == current_user.id%>
-      <%boolen='※あなたは既にこの工夫へ評価を投稿しています'%>       
+      <%boolen='false'%>       
     <% end %>
   <% end %>
 
@@ -118,6 +118,6 @@
   <%if boolen=='true'%>
     <%= render "notecomments/form" %>
   <%else%>
-    <p><%=boolen%></p>
+    <p>※あなたは既にこの工夫へ評価を投稿しています</p>
   <%end%>
 </div>

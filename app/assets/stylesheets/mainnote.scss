@@ -50,7 +50,8 @@ nav li:hover{
     width: 300px;
     height: 20px;
 }
-/*ボタンのデザイン*/
+
+/*ボタンのcss*/
 .like_before{
     color: gray;
     background: transparent;
@@ -79,9 +80,10 @@ nav li:hover{
 }
 
 
-/*エラーメッセージ*/
+/*エラーメッセージのcss*/
 .error_massege_text{
     color: #DD0000;
+    font-size: 12px;
 }
 
 .error_form{
@@ -95,12 +97,19 @@ nav li:hover{
     background-color:#FFDBC9;
     border: 1px solid #DD0000;
 }   
-/*ログインページ*/
+/*loginページのcss*/
+/*registrationのcss*/
+.form_area{
+    display: flex;
+    align-items: baseline;
+    height: 100px;
+}
 
+.label_width{
+    width:400px;
+}
 
 /*topページのcss*/
-
-/*何回も使いそう*/
 .top_content_border{
     border:1px solid silver;
    }
@@ -145,7 +154,7 @@ nav li:hover{
 }
 
 .show_top_contents{
- overflow: hidden;
+    overflow: hidden;
 }
 
 .show_top_content{
@@ -193,7 +202,7 @@ nav li:hover{
 }
 
 
-/*ユーザー一覧のcss*/
+/*usershowのcss*/
 .userlist_user_area{
     width:200px;
     height:200px;
@@ -206,7 +215,7 @@ nav li:hover{
 }
 
 
-/*Userpgのcss*/
+/*userpgのcss*/
 .userpg_contents{
     padding: 40px 40px 0px;
     background-color: #EEEEEE;
@@ -255,13 +264,13 @@ nav li:hover{
 }
 
 
-/*アバウトページのcss*/
+/*aboutページのcss*/
 .text_center{
     text-align: center;
 }
 
 
-/*コメントのcss*/
+/*commentのcss*/
 .comment_pointbar p{
     display: inline-block;
     width: 300px;
