@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -11,13 +12,12 @@
     <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-<div class="main-margin">
   <div class="title">
     <h2>工夫内容更新</h2>
   </div>
   <div class="main_border">
+    <div class="form_background">
     <%= form_with model: @mainnote,:url => {:action => :update}  do |form| %>
-        
       <div class="form_area">
         <p class="label_width"><strong><%= form.label :"タイトル" %></strong></p>
         <%boolen_title=""%>
@@ -71,7 +71,7 @@
           <% end %> 
         </div>  
       </div>   
-
+      
       <div class="form_area">
         <p class="label_width"><strong><%= form.label :"カテゴリー" %></strong></p>
         <%boolen_category=""%>
@@ -80,20 +80,34 @@
         <% end %>
         <div>
           <%if boolen_category == "false"%>
-            <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], include_blank: "カテゴリーを選択して下さい"  %>
+            <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], {include_blank: "カテゴリーを選択して下さい"}, class:"error_form" %>
             <% @mainnote.errors.full_messages_for(:category).each do |message| %>
               <p class="error_massege_text"><strong><%= message %></strong></p>
             <% end %>
           <%else%> 
-            <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], include_blank: "カテゴリーを選択して下さい"%>
+            <%= form.select :category,[["生活", "生活"], ["仕事", "仕事"], ["健康", "健康"], ["節約", "節約"], ["工夫アイテム", "工夫アイテム"], ["その他", "その他"]], {include_blank: "カテゴリーを選択して下さい"}, class:"form_size" %>
           <% end %>
         </div>  
       </div>
 
       <div class="form_area">
-        <p class="label_width"><strong><%= form.label :"必要なもの" %></strong></p>
-        <%=form.text_area :thingstoprepare, class:"form_size"%>
+        <p class="label_width"><strong><%= form.label :"用意するもの" %></strong></p>
+        <%boolen_thingstoprepare=""%>
+        <% @mainnote.errors.full_messages_for(:thingstoprepare).each do |message| %>
+          <%boolen_thingstoprepare="false"%>
+        <% end %>
+        <div>  
+          <%if boolen_thingstoprepare == "false"%>
+            <%= form.text_area :thingstoprepare, class:"error_form" %>
+              <% @mainnote.errors.full_messages_for(:thingstoprepare).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%>      
+            <%= form.text_area :thingstoprepare, class:"form_size" %>
+          <% end %> 
+        </div>  
       </div>
+      
       <p><strong>図やイラストがあれば載せましょう。※jpg,jpeg,pngのみ対応しています。</strong></p>
       
       <!--画像１があれば表示して削除ボタンを表示。空ならフォームを表示-->
@@ -128,7 +142,8 @@
           <%= form.file_field :image3 %>
         <%end%>
       </div>
-      <%= form.submit :"投稿を更新する" %>
+      <%= form.submit value:"更新",class:"main_button"  %>
     <% end %>
+    </div>
   </div>
 </div>

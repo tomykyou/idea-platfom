@@ -1,8 +1,7 @@
 class MainnoteController < ApplicationController
   before_action :authenticate_user!, except: [:top,:about]
-
   def top
-    @mainnote = Mainnote.all.page(params[:page]).per(20)
+    @mainnote = Mainnote.all.page(params[:page]).per(12)
   end
 
   def show

@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -11,9 +12,11 @@
     <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-<div class="main-margin">
-  <h1>ユーザー情報更新</h1>
+  <div class="title">
+    <h2>ユーザー情報更新</h2>
+  </div>
   <div class="main_border">
+    <div class="form_background">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       
       <div class="form_area">
@@ -50,10 +53,22 @@
         </div>
       <%end%>
 
-
       <div class="form_area">
-        <p class="label_width"><strong>ひとこと</strong></p>
-        <%= f.text_field :award, class:"form_size" %>
+       <p class="label_width"><strong><%= f.label :自己紹介 %></strong></p>
+          <%boolen_award = ""%>
+        <% resource.errors.full_messages_for(:award).each do |message| %>
+          <%boolen_award = "false"%>
+        <% end %>
+        <div>
+          <%if boolen_award == "false"%>
+            <%= f.text_field :award, class: "error_form" %>
+            <% resource.errors.full_messages_for(:award).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%>
+            <%= f.text_field :award, class: "form_size" %>  
+          <%end%>  
+        </div>  
       </div>
 
       <div class="form_area">
@@ -76,9 +91,10 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "更新" %>
+        <%= f.submit value:"ユーザー情報更新", class:"main_button"%>
       </div>
     <% end %>
     <%= button_to "退会する", registration_path(resource_name), data: { confirm: "退会したら全ての記録が削除されます。本当によろしいですか?" }, method: :delete %>
+  </div>
   </div>
 </div>

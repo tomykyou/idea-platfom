@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -11,9 +12,11 @@
     <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-<div class="main-margin">
-  <h1>パスワード変更</h1>
+  <div class="title">  
+    <h2>パスワード変更</h2>
+  </div>
   <div class="main_border">
+    <div class="form_background">
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
       <div class="field">
@@ -53,8 +56,9 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "パスワードを変更" %>
+        <%= f.submit "パスワードを変更" class:"main_button"%>
       </div>
     <% end %>
+    </div>
   </div>
 </div>

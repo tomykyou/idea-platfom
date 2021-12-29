@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -11,7 +12,6 @@
     <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-<div class="main-margin">
   <div class="show_user_contents">
     <% @user_mainnote.each do |user| %>
       <div class="show_user_content">
@@ -43,15 +43,15 @@
   <div class="show_top_contents">
     <div class="show_top_content">
       <% if current_user.already_liked?(@mainnote) %>
-        <%= button_to "いいね！" + "#{@mainnote.likes.count}" , mainnote_like_path(@mainnote), method: :delete ,class:"like_after" %>
+        <%= button_to "いいね" + "#{@mainnote.likes.count}" , mainnote_like_path(@mainnote), method: :delete ,class:"like_after" %>
       <% else %>
-        <%= button_to "いいね！" + "#{@mainnote.likes.count}", mainnote_likes_path(@mainnote),class:"like_before" %>
+        <%= button_to "いいね" + "#{@mainnote.likes.count}", mainnote_likes_path(@mainnote),class:"like_before" %>
       <% end %>
       
       <% if current_user.already_used?(@mainnote) %>
-        <%= button_to "使います！" + "#{@mainnote.uses.count}", mainnote_use_path(@mainnote), method: :delete,class:"use_after" %>
+        <%= button_to "使います" + "#{@mainnote.uses.count}", mainnote_use_path(@mainnote), method: :delete,class:"use_after" %>
       <% else %>
-        <%= button_to "使います！" + "#{@mainnote.uses.count}", mainnote_uses_path(@mainnote) ,class:"use_before"%>
+        <%= button_to "使います" + "#{@mainnote.uses.count}", mainnote_uses_path(@mainnote) ,class:"use_before"%>
       <% end %>
       <h3>獲得ポイント</h3>
       <div class="show_content_pointbar">

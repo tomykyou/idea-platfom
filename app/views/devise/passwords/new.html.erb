@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -11,26 +12,28 @@
     <li><%= link_to "工夫職人一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-<div class="main-margin">
-  <h1>パスワード変更</h1>
+  <div class="title">
+    <h2>パスワード変更</h2>
+  </div>
   <div class="main_border">
+    <div class="form_background">
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <p><strong><%= f.label :メールアドレス %><br/></strong></p> 
       <%boolen_email = ""%>
       <% resource.errors.full_messages_for(:email).each do |message| %>
         <%boolen_email = "false"%>
       <% end %>
       <%if boolen_email == "false"%>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "error_form" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "error_form", placeholder:"メールアドレス" %>
         <% resource.errors.full_messages_for(:email).each do |message| %>
           <p class="error_massege_text"><strong><%= message %></strong></p>
         <% end %>
       <%else%>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_size" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_size", placeholder:"メールアドレス" %>
       <% end %>
       <div class="actions">
         <%= f.submit "パスワード変更メールを送付" %>
       </div>
     <% end %>
+    </div>
   </div>
 </div>

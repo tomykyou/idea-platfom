@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -11,10 +12,11 @@
     <li><%= link_to "ユーザー一覧", mainnnote_usershow_path %></li>
   </ul>
 </nav>
-<div class="main-margin">
-  <h1>新規登録</h1>
+  <div class="title">
+    <h2>新規登録</h2>
+  </div>
 <div class="main_border">
-
+  <div class="form_background">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form_area">
         <p class="label_width"><strong><%= f.label :メールアドレス %><br/></strong></p> 
@@ -58,11 +60,23 @@
         <p class="label_width"><strong><%= f.label :アイコン%></strong>(jpg,jpeg,pngのみ対応しています)</p>
         <%= f.file_field :image ,accept: 'image/jpg,image/jpeg,image/png' %>
       </div>
-      
 
       <div class="form_area">
-       <p class="label_width"><strong><%= f.label :一言 %></strong></p>
-        <%= f.text_field :award, class: "form_size" %>
+       <p class="label_width"><strong><%= f.label :自己紹介 %></strong></p>
+          <%boolen_award = ""%>
+        <% resource.errors.full_messages_for(:award).each do |message| %>
+          <%boolen_award = "false"%>
+        <% end %>
+        <div>
+          <%if boolen_award == "false"%>
+            <%= f.text_field :award, class: "error_form" %>
+            <% resource.errors.full_messages_for(:award).each do |message| %>
+              <p class="error_massege_text"><strong><%= message %></strong></p>
+            <% end %>
+          <%else%>
+            <%= f.text_field :award, class: "form_size" %>  
+          <%end%>  
+        </div>  
       </div>
 
       <div class="form_area">
@@ -73,12 +87,12 @@
         <% end %>
         <div>
           <%if boolen_occupation == "false"%>
-            <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], include_blank: "職業を選択して下さい",class: 'error_form' %>
+            <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], {include_blank: "職業を選択して下さい"}, class: 'error_form' %>
             <% resource.errors.full_messages_for(:occupation).each do |message| %>
               <p class="error_massege_text"><strong><%= message %></strong></p>
             <% end %>
           <%else%>
-            <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], include_blank: "職業を選択して下さい" %>
+            <%= f.select :occupation, [["学生", "学生"], ["サラリーマン", "サラリーマン"], ["主婦", "主婦"]], {include_blank: "職業を選択して下さい"}, class: 'form_size' %>
           <% end %>   
         </div>  
       </div>
@@ -101,7 +115,6 @@
         </div>  
       </div>
 
-
       <div class="form_area">
        <p class="label_width"><strong><%= f.label :"パスワード(確認用)" %></strong></p>
         <%boolen_password_confirmation=""%>
@@ -121,9 +134,10 @@
       </div>
       
       <div class="actions">
-        <%= f.submit "登録", class: "btn btn-primary btn-block" %>
+        <%= f.submit value:"新規登録", class:"main_button"%>
       </div>
 
     <% end %>
+    </div>
   </div>
 </div>

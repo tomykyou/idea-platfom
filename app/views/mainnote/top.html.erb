@@ -1,3 +1,4 @@
+<div class="main_zone">
 <h1 align="center">工夫FACTORY</h1>
 <nav id="menuber">
   <ul class="menu-text">
@@ -17,7 +18,6 @@
   </ul>
 </nav>
 
-<div class="main-margin">
   <h2>トップ</h2>
   <div class="main_border">
     <% @mainnote.each do |mainnote| %>
@@ -59,6 +59,8 @@
         </div>
       </div>
     <% end %>
-  <%= paginate @mainnote %>
+    <div class="paginate">
+      <p><%= paginate @mainnote %></p>
+    </div>  
   </div>
 </div>
