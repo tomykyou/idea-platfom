@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_233641) do
+ActiveRecord::Schema.define(version: 2021_12_05_150126) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "mainnote_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mainnote_id"], name: "index_likes_on_mainnote_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
 
   create_table "mainnotes", force: :cascade do |t|
     t.string "text"
@@ -21,6 +30,9 @@ ActiveRecord::Schema.define(version: 2021_10_12_233641) do
     t.string "image1"
     t.string "image2"
     t.string "image3"
+    t.string "target"
+    t.string "category"
+    t.string "thingstoprepare"
     t.index ["user_id"], name: "index_mainnotes_on_user_id"
   end
 
@@ -47,10 +59,24 @@ ActiveRecord::Schema.define(version: 2021_10_12_233641) do
     t.string "username"
     t.string "image"
     t.string "award"
+    t.string "occupation"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "uses", force: :cascade do |t|
+    t.integer "mainnote_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mainnote_id"], name: "index_uses_on_mainnote_id"
+    t.index ["user_id"], name: "index_uses_on_user_id"
+  end
+
+  add_foreign_key "likes", "mainnotes"
+  add_foreign_key "likes", "users"
   add_foreign_key "mainnotes", "users"
   add_foreign_key "notecomments", "mainnotes"
+  add_foreign_key "uses", "mainnotes"
+  add_foreign_key "uses", "users"
 end

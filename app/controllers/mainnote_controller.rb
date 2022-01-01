@@ -1,15 +1,15 @@
 class MainnoteController < ApplicationController
-  before_action :authenticate_user!
-
+  before_action :authenticate_user!, except: [:top,:about]
   def top
-    @mainnote = Mainnote.all
-    render layout: false 
+    @mainnote = Mainnote.all.page(params[:page]).per(12)
   end
 
   def show
     @mainnote = Mainnote.find(params[:id])
     @user_mainnote= User.where(id: @mainnote.user_id)
     @notecomment = Notecomment.where(mainnote_id: @mainnote.id)
+    @like = Like.new
+    @use = Use.new
   end
 
   def new
@@ -35,16 +35,31 @@ class MainnoteController < ApplicationController
 
   def update
     @mainnote = Mainnote.find(params[:id])
-    if @mainnote.user_id != current_user.id
-      redirect_to  @mainnote
+    if params[:delete_image1]
+         @mainnote.image1 = nil
+         @mainnote.save!
+         render :action => 'edit'
+         return
+    end
+    if params[:delete_image2]
+         @mainnote.image2 = nil
+         @mainnote.save!
+         render :action => 'edit'
+         return
+    end
+    if params[:delete_image3]
+         @mainnote.image3 = nil
+         @mainnote.save!
+         render :action => 'edit'
+         return
+    end
+    if @mainnote.update(mainnote_params)
+      redirect_to @mainnote
     else
-      if @mainnote.update(mainnote_params)
-        redirect_to @mainnote
-      else
-        render :edit
-      end
+      render :edit
     end  
   end
+
 
   def destroy
     @mainnote = Mainnote.find(params[:id])
@@ -56,26 +71,28 @@ class MainnoteController < ApplicationController
     end
   end
 
-  def mypage
-    @mainnote = Mainnote.where(user_id: current_user.id)
-    @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
+  def about
+
   end
 
   def usershow
     @user = User.all
-    render layout: false 
+  end
+
+  def mypage
+    @mainnote = Mainnote.where(user_id: current_user.id)
+    @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
   end
 
   def userpg
       @user = User.find(params[:id])
       @mainnote = Mainnote.where(user_id: @user.id)
       @notecomment = Notecomment.where(mainnote_id: @mainnote.ids)
-      render layout: false 
   end
   
   private
     def mainnote_params
-      params.require(:mainnote).permit(:user_id, :text, :title, :image1, :image2, :image3)
+      params.require(:mainnote).permit(:user_id, :text, :title, :image1, :image2, :image3, :category, :target, :thingstoprepare)
     end
 
 

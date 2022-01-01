@@ -63,12 +63,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    resource.update_without_password(params)  
   end
-
-  ##必須ではないがupdate後にtop画面にリダイレクトするメソッド
-  def after_update_path_for(_resource)
+  
+  def after_sign_in_path_for(resource)
     root_path
+  end 
+
+  def after_update_path_for(_resource)
+    mainnnote_mypage_path 
   end
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:username,:image, :award])
