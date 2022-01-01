@@ -65,5 +65,3 @@ gem 'kaminari'
 group :production do
   gem 'pg'
 end
-
-
