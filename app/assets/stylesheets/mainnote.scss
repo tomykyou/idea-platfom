@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.menu-text{
+.menu_text{
     display: flex;
     margin: 0 ;
     padding: 0 ;
@@ -32,12 +32,12 @@ nav ul li a {
 
 nav ul li a:hover{
     text-decoration: none;
-    color: #ffffff;
+    font-weight: 700;
 
 }
-
-nav li:hover{
-    background-color: #38c7ff;
+nav ul li a:hover{
+    padding-bottom: 5px;
+    border-bottom: solid #38c7ff 2px;
 }
 
 .user_icon{
@@ -47,10 +47,7 @@ nav li:hover{
     height: 80px;
 }
 
-.main-margin{
-    margin-left:100px;
-    width: 1300px;
-}
+
 
 .main_border{
     border-top:1px solid black;
@@ -164,7 +161,7 @@ input[type="file"] {
     border:1px solid silver;
    }
 
-.top-content_image{
+.top_content_image{
     width: 200px;
     height: 120px;
     border: black;
